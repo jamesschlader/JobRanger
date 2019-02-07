@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using JobRanger.Models;
+
 
 namespace JobRanger.Data
 {
@@ -12,5 +14,13 @@ namespace JobRanger.Data
             : base(options)
         {
         }
+        public DbSet<JobRanger.Models.Agency> Agency { get; set; }
+        public DbSet<JobRanger.Models.Employer> Employer { get; set; }
+        public DbSet<JobRanger.Models.Job> Job { get; set; }
+        public DbSet<JobRanger.Models.Contact> Contact { get; set; }
+        public DbSet<JobRanger.Models.Interaction> Interactions { get; set; }
+        public DbSet<JobRanger.Models.InteractionTypes> InteractionTypes { get; set; }
+
+        
     }
 }

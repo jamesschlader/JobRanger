@@ -1,0 +1,64 @@
+﻿@page
+@model JobRanger.Pages.Interactions.IndexModel
+
+@{
+    ViewData["Title"] = "Actions - Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Actions</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Interaction[0].TargetTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interaction[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interaction[0].Job)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interaction[0].Job.Employer)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Interaction) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TargetTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type.Name)
+        </td>
+        <td>
+            <a asp-page="../Job/Details" asp-route-id="@item.JobId">@Html.DisplayFor(modelItem => item.Job.Name)</a> 
+        </td>
+        <td>
+            <a asp-page="../Employer/Details" asp-route-id="@item.Job.EmployerId"> @Html.DisplayFor(modelItem => item.Job.Employer.Name)</a> 
+        </td>
+        <td>
+            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+    <tr>
+        <th>Notes</th>
+    </tr>
+    <tr>
+        <td>
+            <p style="width: auto; height: 100px;overflow: auto"> @item.Notes</p>
+           
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@page
+@model JobRanger.Pages.Agency.Index
+
+@{
+    ViewData["Title"] = "Agency";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Agencies</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+@foreach (var item in Model.Agency)
+{
+    <div class="card m-3 p-2" style="width: 18rem; display: inline-block">
+        <div class="card-body">
+            
+            
+            <h5 class="card-title d-inline-block"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h5>
+            <img src=@Html.DisplayFor(icon=>item.IconSrc) height="50px" width="50px"/>
+            
+            <div>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
+            
+
+        </div>
+    </div>
+}
+    

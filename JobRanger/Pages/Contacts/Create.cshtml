@@ -1,0 +1,74 @@
+﻿@page
+@model JobRanger.Pages.Contacts.CreateModel
+
+@{
+    ViewData["Title"] = "Add Contact";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Add Contact</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Contact.Name" class="control-label"></label>
+                <input asp-for="Contact.Name" class="form-control" />
+                <span asp-validation-for="Contact.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.Email" class="control-label"></label>
+                <input asp-for="Contact.Email" class="form-control" />
+                <span asp-validation-for="Contact.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.PhoneNumber" class="control-label"></label>
+                <input asp-for="Contact.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Contact.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.Address1" class="control-label"></label>
+                <input asp-for="Contact.Address1" class="form-control" />
+                <span asp-validation-for="Contact.Address1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.Address2" class="control-label"></label>
+                <input asp-for="Contact.Address2" class="form-control" />
+                <span asp-validation-for="Contact.Address2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.City" class="control-label"></label>
+                <input asp-for="Contact.City" class="form-control" />
+                <span asp-validation-for="Contact.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.State" class="control-label"></label>
+                <input asp-for="Contact.State" class="form-control" />
+                <span asp-validation-for="Contact.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.ZipCode" class="control-label"></label>
+                <input asp-for="Contact.ZipCode" class="form-control" />
+                <span asp-validation-for="Contact.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.EmployerId" class="control-label"></label>
+                <select asp-for="Contact.EmployerId" class ="form-control" asp-items="ViewBag.EmployerId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,81 @@
+﻿@page 
+@using JobRanger.Models
+@model JobRanger.Pages.Employer.IndexModel
+
+@{
+    ViewData["Title"] = "Employer";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Employers</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+@foreach (var item in Model.Employer)
+{
+    <div class="card m-3 p-2" style="width: auto; display: inline-block">
+        <div class="card-body">
+            <h5 class="card-title"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h5>
+            <div class="d-inline-block">
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
+            <br/>
+            <table class="table">
+                <tr>
+                    <th>Job Name</th>
+                    <th>Job Number</th>
+                    <th>Description</th>
+                </tr>
+               
+                    @foreach (var job in item.Jobs)
+                       {
+                         
+                               <tr>
+                                   <td>
+                                       <a asp-page="../Job/Details" asp-route-id="@job.Id">@Html.DisplayFor(modelItem => job.Name)</a>
+
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => job.Number)
+                                   </td>
+                                   <td>
+                                       <p style="width: auto; height: 100px;overflow: auto"> @Html.DisplayFor(model => job.Description)</p>
+                                      
+                                   </td>
+                               </tr>
+                           
+                        
+                    }
+                
+                
+            </table>
+            <br/>
+            <table class="table">
+                <tr>
+                    <th>Contact Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+                @foreach (var dude in item.Contacts)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem=>dude.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem=>dude.Email)
+                        </td>
+                    <td>
+                    @Html.DisplayFor(modelItem=>dude.PhoneNumber)
+                    </td>
+                    </tr>
+                }
+            </table>
+            
+        </div>
+    </div>
+}

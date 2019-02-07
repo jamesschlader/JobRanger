@@ -43,7 +43,16 @@ namespace JobRanger
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizePage("/Contact");
+                    //options.Conventions.AuthorizeFolder("/Agency");
+                    //options.Conventions.AuthorizeFolder("/Employer");
+                    options.Conventions.AllowAnonymousToPage("/Index");
+                    
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

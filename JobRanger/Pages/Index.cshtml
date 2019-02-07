@@ -1,10 +1,17 @@
 ﻿@page
-@model IndexModel
+@model JobRanger.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+<div class="jumbotron">
+    <h1 class="display-4">[job]<span style="color: darkgreen">RANGER</span></h1>
+    <p class="lead">Master the job search wilderness with killer tools supplied by [job]<span style="color: darkgreen">RANGER</span>.</p>
+    <hr class="my-4">
+    <p>Organize your job searches in one place. Track your contacts with employers. Customize your resumes and cover letters. More!</p>
+    <a class="btn btn-primary btn-lg" asp-area="" asp-page="/About" role="button">Learn more</a>
 </div>
+

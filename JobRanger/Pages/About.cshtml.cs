@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace JobRanger.Pages
 {
-    public class IndexModel : PageModel
+    public class AboutModel : PageModel
     {
         public void OnGet()
         {

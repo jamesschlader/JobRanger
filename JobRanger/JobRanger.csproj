@@ -6,10 +6,29 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20190205002925_AddedAssociationsBetweenContactAndEmployer.cs" />
+    <Compile Remove="Data\Migrations\20190205002925_AddedAssociationsBetweenContactAndEmployer.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190205003107_AddedAssociationsBetweenContactAndJob.cs" />
+    <Compile Remove="Data\Migrations\20190205003107_AddedAssociationsBetweenContactAndJob.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190205003617_AddedAssociationsBetweenContactAndJob2.cs" />
+    <Compile Remove="Data\Migrations\20190205003617_AddedAssociationsBetweenContactAndJob2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190205012839_UpdateedAssociationsOnEmployerContactJob.cs" />
+    <Compile Remove="Data\Migrations\20190205012839_UpdateedAssociationsOnEmployerContactJob.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190205013111_UpdateedAssociationsOnEmployerContactJob2.cs" />
+    <Compile Remove="Data\Migrations\20190205013111_UpdateedAssociationsOnEmployerContactJob2.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\images\" />
   </ItemGroup>
 
 </Project>

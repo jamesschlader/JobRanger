@@ -1,0 +1,71 @@
+﻿@page "{id:int}"
+@model JobRanger.Pages.Employer.EditModel
+
+@{
+    ViewData["Title"] = "Employer Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@Html.DisplayFor(model => model.Employer.Name)</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Employer.Id" />
+            
+            <div class="form-group">
+                <label asp-for="Employer.Name" class="control-label"></label>
+                <input asp-for="Employer.Name" class="form-control" />
+                <span asp-validation-for="Employer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.WebSite" class="control-label"></label>
+                <input asp-for="Employer.WebSite" class="form-control" />
+                <span asp-validation-for="Employer.WebSite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.PhoneNumber" class="control-label"></label>
+                <input asp-for="Employer.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Employer.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.Address1" class="control-label"></label>
+                <input asp-for="Employer.Address1" class="form-control" />
+                <span asp-validation-for="Employer.Address1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.Address2" class="control-label"></label>
+                <input asp-for="Employer.Address2" class="form-control" />
+                <span asp-validation-for="Employer.Address2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.City" class="control-label"></label>
+                <input asp-for="Employer.City" class="form-control" />
+                <span asp-validation-for="Employer.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.State" class="control-label"></label>
+                <input asp-for="Employer.State" class="form-control" />
+                <span asp-validation-for="Employer.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employer.ZipCode" class="control-label"></label>
+                <input asp-for="Employer.ZipCode" class="form-control" />
+                <span asp-validation-for="Employer.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
