@@ -27,6 +27,7 @@ namespace JobRanger.Pages.Employer
                 .Include(e=>e.Jobs)
                 .Include(e=>e.Contacts)
                 .ThenInclude(c=>c.Jobs)
+                .OrderByDescending(i=>i.Jobs.Count)
                 .AsNoTracking()
                 .ToListAsync();
         }

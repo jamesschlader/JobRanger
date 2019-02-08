@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using JobRanger.Data;
 using JobRanger.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace JobRanger.Pages.Interactions
 {
@@ -19,14 +20,17 @@ namespace JobRanger.Pages.Interactions
             _context = context;
         }
 
-        public IList<Interaction> Interaction { get;set; }
-
+        public IList<Interaction> Interaction { get; set; }
+            
+        
         public async Task OnGetAsync()
         {
             Interaction = await _context.Interactions
                 .Include(i => i.Job)
                 .ThenInclude(e=>e.Employer)
-                .Include(i => i.Type).ToListAsync();
+                .Include(i => i.Type)
+                .OrderBy(i=>i.TargetTime)
+                .ToListAsync();
         }
     }
 }

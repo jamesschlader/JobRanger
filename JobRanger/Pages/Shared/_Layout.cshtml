@@ -18,7 +18,7 @@
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body  style="background-image: url('/lib/images/background.jpg'); background-size: cover ">
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
@@ -56,9 +56,9 @@
         </div>
     </nav>
 </header>
-    <div class="container">
+    <div class="container" style="background-color: #ffffff; " >
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+        <main role="main" class="px-3 py-5 mx-5 my-5" >
             @RenderBody()
         </main>
     </div>

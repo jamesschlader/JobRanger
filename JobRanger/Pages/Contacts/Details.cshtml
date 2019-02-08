@@ -25,7 +25,15 @@
             @Html.DisplayNameFor(model => model.Contact.PhoneNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contact.PhoneNumber)
+            
+            @{
+                string area = Model.Contact.PhoneNumber.Substring(0, 3);
+                string prefix = Model.Contact.PhoneNumber.Substring(3, 3);
+                string main = Model.Contact.PhoneNumber.Substring(6, 4);
+
+                string final = "(" + area + ") " + prefix + "-" + main;
+            }
+            @final
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Contact.Address1)
@@ -67,5 +75,6 @@
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Contact.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to List</a> |
+    <a href="javascript: history.go(-1)">Go Back to Previous Page</a>
 </div>

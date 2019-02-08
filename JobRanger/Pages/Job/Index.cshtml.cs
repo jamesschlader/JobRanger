@@ -26,9 +26,10 @@ namespace JobRanger.Pages.Job
             Job = await _context.Job
                 .Include(job=>job.Employer)
                 .Include(actions=>actions.Interactions)
-                .ThenInclude(inter=>inter.Type)
-              .AsNoTracking()
-             .ToListAsync();
+                    .ThenInclude(i=>i.Type)
+                .Include(action=>action.Interactions)
+                .AsNoTracking()
+               .ToListAsync();
         }
     }
 }

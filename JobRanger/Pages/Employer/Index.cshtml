@@ -64,13 +64,21 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem=>dude.Name)
+                            <a asp-page="../Contacts/Details" asp-route-id="@dude.Id"> @Html.DisplayFor(modelItem => dude.Name)</a>
+                           
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem=>dude.Email)
                         </td>
                     <td>
-                    @Html.DisplayFor(modelItem=>dude.PhoneNumber)
+                        @{
+                            string area = item.PhoneNumber.Substring(0, 3);
+                            string prefix = item.PhoneNumber.Substring(3, 3);
+                            string main = item.PhoneNumber.Substring(6, 4);
+
+                            string final = "(" + area + ") " + prefix + "-" + main;
+                        }
+                        @final
                     </td>
                     </tr>
                 }

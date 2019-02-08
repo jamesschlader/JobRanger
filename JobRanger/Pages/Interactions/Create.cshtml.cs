@@ -26,9 +26,7 @@ namespace JobRanger.Pages.Interactions
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-
-          
-
+            
             PopulateInteractionTypesDropDownList(_context);
         ViewData["JobId"] = new SelectList(_context.Job, "Id", "Name");
         ViewData["InteractionTypesId"] = new SelectList(_context.InteractionTypes, "Id", "Id");
