@@ -18,7 +18,9 @@
             
             
             <h5 class="card-title d-inline-block"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h5>
-            <img src=@Html.DisplayFor(icon=>item.IconSrc) height="50px" width="50px"/>
+            
+                <img src=@Html.DisplayFor(icon=>item.IconSrc) height="50" width="50" />
+            
             
             <div>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
@@ -30,4 +32,4 @@
         </div>
     </div>
 }
-    
+

@@ -46,9 +46,11 @@ namespace JobRanger
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
                 {
-                    options.Conventions.AuthorizePage("/Contact");
-                    //options.Conventions.AuthorizeFolder("/Agency");
-                    //options.Conventions.AuthorizeFolder("/Employer");
+                    options.Conventions.AuthorizePage("/Contacts");
+                    options.Conventions.AuthorizeFolder("/Agency");
+                    options.Conventions.AuthorizeFolder("/Employer");
+                    options.Conventions.AuthorizeFolder("/Interactions");
+                    options.Conventions.AuthorizeFolder("/Job");
                     options.Conventions.AllowAnonymousToPage("/Index");
                     
                 })

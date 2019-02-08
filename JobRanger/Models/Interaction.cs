@@ -19,7 +19,7 @@ namespace JobRanger.Models
 
         public string Notes { get; set; }
 
-        public int InteractionTypesId { get; set; }
+       public int InteractionTypesId { get; set; }
         public virtual InteractionTypes Type { get; set; }
 
         public int JobId { get; set; }
