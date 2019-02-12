@@ -41,7 +41,7 @@ namespace JobRanger.Models
 
         //public int JobId { get; set; }
 
-        public ICollection<Job> Jobs { get; set; }
+       public ICollection<Job> Jobs { get; set; }
         public ICollection<Contact> Contacts { get; set; }
     }
 }

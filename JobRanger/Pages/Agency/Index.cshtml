@@ -6,29 +6,29 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Agencies</h1>
+<h1 class="display-2"><strong>Agencies</strong></h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
 @foreach (var item in Model.Agency)
 {
-    <div class="card m-3 p-2" style="width: 18rem; display: inline-block">
+    <div class="card m-3  " style=" background-color: white;
+                                      color: rgb(172, 105, 177);
+                                      width: 18rem;
+                                      display:inline-block
+                                  " >
         <div class="card-body">
+           
+                <h5 class="card-title "><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank"><img src="@item.IconSrc" height="120" width="120" /></a>
+                </h5>
+                <div>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
             
             
-            <h5 class="card-title d-inline-block"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h5>
-            
-                <img src=@Html.DisplayFor(icon=>item.IconSrc) height="50" width="50" />
-            
-            
-            <div>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </div>
-            
-
         </div>
     </div>
 }

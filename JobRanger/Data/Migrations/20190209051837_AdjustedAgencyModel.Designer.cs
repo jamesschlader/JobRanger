@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobRanger.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190208050755_AnotherAttemptToDropInteractionTypeTable")]
-    partial class AnotherAttemptToDropInteractionTypeTable
+    [Migration("20190209051837_AdjustedAgencyModel")]
+    partial class AdjustedAgencyModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,12 +29,18 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<string>("IconSrc");
 
+                    b.Property<int>("IronSrcId");
+
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<int?>("PersonId");
 
                     b.Property<string>("WebSite");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Agency");
                 });
@@ -61,6 +67,8 @@ namespace JobRanger.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<int?>("PersonId");
+
                     b.Property<string>("PhoneNumber");
 
                     b.Property<string>("State");
@@ -73,7 +81,34 @@ namespace JobRanger.Data.Migrations
 
                     b.HasIndex("EmployerId");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Contact");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<long>("ContentSize");
+
+                    b.Property<int?>("PersonId");
+
+                    b.Property<int?>("PersonId1");
+
+                    b.Property<DateTime>("UploadDT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.HasIndex("PersonId1");
+
+                    b.ToTable("Document");
                 });
 
             modelBuilder.Entity("JobRanger.Models.Employer", b =>
@@ -94,6 +129,8 @@ namespace JobRanger.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<int?>("PersonId");
+
                     b.Property<string>("PhoneNumber");
 
                     b.Property<string>("State");
@@ -104,7 +141,23 @@ namespace JobRanger.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Employer");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.Icons", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Source")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Icons");
                 });
 
             modelBuilder.Entity("JobRanger.Models.Interaction", b =>
@@ -119,6 +172,8 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<string>("Notes");
 
+                    b.Property<int?>("PersonId");
+
                     b.Property<DateTime>("TargetTime");
 
                     b.HasKey("Id");
@@ -126,6 +181,8 @@ namespace JobRanger.Data.Migrations
                     b.HasIndex("InteractionTypesId");
 
                     b.HasIndex("JobId");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Interactions");
                 });
@@ -162,6 +219,8 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<int>("Number");
 
+                    b.Property<int?>("PersonId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AgencyId");
@@ -170,7 +229,48 @@ namespace JobRanger.Data.Migrations
 
                     b.HasIndex("EmployerId");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Job");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address1")
+                        .HasMaxLength(75);
+
+                    b.Property<string>("Address2")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("City")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("State");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("UserId1")
+                        .IsRequired();
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("Persons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -338,12 +438,41 @@ namespace JobRanger.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("JobRanger.Models.Agency", b =>
+                {
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("Agencies")
+                        .HasForeignKey("PersonId");
+                });
+
             modelBuilder.Entity("JobRanger.Models.Contact", b =>
                 {
                     b.HasOne("JobRanger.Models.Employer", "Employer")
                         .WithMany("Contacts")
                         .HasForeignKey("EmployerId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("References")
+                        .HasForeignKey("PersonId");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.Document", b =>
+                {
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("CoverLetters")
+                        .HasForeignKey("PersonId");
+
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("Resumes")
+                        .HasForeignKey("PersonId1");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.Employer", b =>
+                {
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("Employers")
+                        .HasForeignKey("PersonId");
                 });
 
             modelBuilder.Entity("JobRanger.Models.Interaction", b =>
@@ -357,6 +486,10 @@ namespace JobRanger.Data.Migrations
                         .WithMany("Interactions")
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("Interactions")
+                        .HasForeignKey("PersonId");
                 });
 
             modelBuilder.Entity("JobRanger.Models.Job", b =>
@@ -372,6 +505,18 @@ namespace JobRanger.Data.Migrations
                     b.HasOne("JobRanger.Models.Employer", "Employer")
                         .WithMany("Jobs")
                         .HasForeignKey("EmployerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JobRanger.Models.Person")
+                        .WithMany("Jobs")
+                        .HasForeignKey("PersonId");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.Person", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -8,7 +8,7 @@ a.navbar-brand {
 }
 
 a {
-  color:rgb(164,102,81)
+  color: rgb(161,72,41)
 }
 
 /* Sticky footer styles
@@ -50,9 +50,6 @@ html {
   min-height: 100%;
 }
 
-main {
-  background-color: rgba(143,240,219,.45)
-}
 
 body {
   /* Margin bottom by footer height */
@@ -61,13 +58,24 @@ body {
   
 }
 
+.agency-card {
+  background-color: rgb(229,229,229);
+  color: rgb(172, 105, 177);
+  width: 18rem;
+  display:inline-block
+}
+
+.agency-card a {
+  color: rgb(161,72,41)
+}
+
 .card {
-  background: none;
-  color: #e5e5e5
+  background: rgba(229,229,229,.50);
+  color: rgb(84, 26, 5)
 }
 
   .card a {
-    color: #e5e5e5
+    color: rgb(161,72,41)
   }
 
 .table {

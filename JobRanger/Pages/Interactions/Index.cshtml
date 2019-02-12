@@ -6,49 +6,51 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Actions</h1>
+<h1 class="display-2"><strong>Actions</strong></h1>
 <a href="javascript: history.go(-1)">Go Back to Previous Page</a>
 <div class="table-responsive-sm ">
 <table class="table table-responsive-sm">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Interaction[0].TargetTime)
-            </th>
-            <th>
-                  @Html.DisplayNameFor(model => model.Interaction[0].Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Interaction[0].Job)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Interaction[0].Job.Employer)
-            </th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Interaction[0].Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interaction[0].TargetTime)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Interaction[0].Job)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interaction[0].Job.Employer)
+        </th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Interaction)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TargetTime)
-                </td>
-                <td>
-                       @Html.DisplayFor(modelItem => item.Type.Name)
-                </td>
-                <td>
-                    <a asp-page="../Job/Details" asp-route-id="@item.JobId">@Html.DisplayFor(modelItem => item.Job.Name)</a>
-                </td>
-                <td>
-                    <a asp-page="../Employer/Details" asp-route-id="@item.Job.EmployerId"> @Html.DisplayFor(modelItem => item.Job.Employer.Name)</a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+
+            <td>
+                <h3> @Html.DisplayFor(modelItem => item.Type.Name)</h3>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetTime)
+            </td>
+            <td>
+                <a asp-page="../Job/Details" asp-route-id="@item.JobId"><h3>@Html.DisplayFor(modelItem => item.Job.Name)</h3></a>
+            </td>
+            <td>
+                <a asp-page="../Employer/Details" asp-route-id="@item.Job.EmployerId"><h5> @Html.DisplayFor(modelItem => item.Job.Employer.Name)</h5></a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
             <tr>
                 <th>Notes</th>
             </tr>

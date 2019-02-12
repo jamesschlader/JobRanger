@@ -6,19 +6,20 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1> @Html.DisplayFor(model => model.Agency.Name)</h1>
+<h1> @Html.DisplayFor(model => model.Agency.Name)</h1><img src=@Model.Agency.IconSrc  height="100" width="200">
 
 <div>
     
     <hr />
     <dl class="row">
-        
+
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Agency.WebSite) 
+            @Html.DisplayNameFor(model => model.Agency.WebSite)
         </dt>
         <dd class="col-sm-10">
             <a href=@Html.DisplayFor(model => model.Agency.WebSite) target="blank">@Html.DisplayFor(model => model.Agency.WebSite)</a>
         </dd>
+        
     </dl>
 </div>
 <div>

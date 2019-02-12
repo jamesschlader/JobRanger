@@ -17,6 +17,10 @@
     <Compile Remove="Data\Migrations\20190205012839_UpdateedAssociationsOnEmployerContactJob.Designer.cs" />
     <Compile Remove="Data\Migrations\20190205013111_UpdateedAssociationsOnEmployerContactJob2.cs" />
     <Compile Remove="Data\Migrations\20190205013111_UpdateedAssociationsOnEmployerContactJob2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190208050755_AnotherAttemptToDropInteractionTypeTable.cs" />
+    <Compile Remove="Data\Migrations\20190208050755_AnotherAttemptToDropInteractionTypeTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190208195352_AddedUserModel.cs" />
+    <Compile Remove="Data\Migrations\20190208195352_AddedUserModel.Designer.cs" />
   </ItemGroup>
 
 

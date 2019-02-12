@@ -21,15 +21,15 @@ namespace JobRanger.Pages.Employer
 
         public IList<Models.Employer> Employer { get;set; }
 
-        public async Task OnGetAsync()
+       public async Task OnGetAsync()
         {
-            Employer = await _context.Employer
+            
+           Employer = await _context.Employer
                 .Include(e=>e.Jobs)
-                .Include(e=>e.Contacts)
-                .ThenInclude(c=>c.Jobs)
-                .OrderByDescending(i=>i.Jobs.Count)
+               .Include(c=>c.Contacts)
                 .AsNoTracking()
+                .OrderByDescending(i => i.Jobs.Count)
                 .ToListAsync();
-        }
+            }
     }
 }

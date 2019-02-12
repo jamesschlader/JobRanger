@@ -7,7 +7,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Employers</h1>
+<h1 class="display-2"><strong>Employers</strong></h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -17,7 +17,7 @@
 {
     <div class="card m-3 p-2" style="width: auto; display: inline-block">
         <div class="card-body">
-            <h5 class="card-title"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h5>
+            <h1 class="card-title"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h1>
             <div class="d-inline-block">
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
@@ -36,7 +36,7 @@
                          
                                <tr>
                                    <td>
-                                       <a asp-page="../Job/Details" asp-route-id="@job.Id">@Html.DisplayFor(modelItem => job.Name)</a>
+                                       <a asp-page="../Job/Details" asp-route-id="@job.Id"><h4>@Html.DisplayFor(modelItem => job.Name)</h4></a>
 
                                    </td>
                                    <td>

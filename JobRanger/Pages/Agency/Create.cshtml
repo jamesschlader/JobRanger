@@ -6,10 +6,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-
-
 <h1>Add Agency</h1>
-
 
 <hr />
 <div class="row">
@@ -25,6 +22,13 @@
                 <label asp-for="Agency.WebSite" class="control-label"></label>
                 <input asp-for="Agency.WebSite" class="form-control" />
                 <span asp-validation-for="Agency.WebSite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agency.IconSrc" class="control-label">Icon</label>
+                <select asp-for="Agency.IconSrc" class="form-control" asp-items=@Model.AgencyIconSrcSelectList>
+                    <option value="">-- Select Icon --</option>
+                </select>
+                <span asp-validation-for="Agency.IconSrc" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
