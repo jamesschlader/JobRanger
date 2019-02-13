@@ -30,7 +30,7 @@ namespace JobRanger.Pages.Agency
                 return NotFound();
             }
 
-            Agency = await _context.Agency.FirstOrDefaultAsync(m => m.Id == id);
+           Agency = await _context.Agency.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Agency == null)
             {
@@ -54,22 +54,22 @@ namespace JobRanger.Pages.Agency
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AgencyExists(Agency.Id))
+               /* if (!AgencyExists(Agency.Id))
                 {
                     return NotFound();
                 }
                 else
                 {
                     throw;
-                }
+                }*/
             }
 
             return RedirectToPage("./Index");
         }
 
-        private bool AgencyExists(int id)
-        {
-            return _context.Agency.Any(e => e.Id == id);
-        }
+     //   private bool AgencyExists(int id)
+      //  {
+           // return _context.Agency.Any(e => e.Id == id);
+      //  }
     }
 }

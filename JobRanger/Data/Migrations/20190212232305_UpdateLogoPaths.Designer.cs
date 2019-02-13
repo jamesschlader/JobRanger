@@ -4,14 +4,16 @@ using JobRanger.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JobRanger.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190212232305_UpdateLogoPaths")]
+    partial class UpdateLogoPaths
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,6 +166,20 @@ namespace JobRanger.Data.Migrations
                     b.ToTable("Employer");
                 });
 
+            modelBuilder.Entity("JobRanger.Models.Icons", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Source")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Icons");
+                });
+
             modelBuilder.Entity("JobRanger.Models.Interaction", b =>
                 {
                     b.Property<int>("Id")
@@ -210,6 +226,8 @@ namespace JobRanger.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AgencyId");
+
                     b.Property<string>("ApplicationUserId");
 
                     b.Property<int?>("ContactId");
@@ -224,6 +242,8 @@ namespace JobRanger.Data.Migrations
                     b.Property<int>("Number");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgencyId");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -382,6 +402,10 @@ namespace JobRanger.Data.Migrations
 
             modelBuilder.Entity("JobRanger.Models.Job", b =>
                 {
+                    b.HasOne("JobRanger.Models.Agency")
+                        .WithMany("Jobs")
+                        .HasForeignKey("AgencyId");
+
                     b.HasOne("JobRanger.Models.ApplicationUser")
                         .WithMany("Jobs")
                         .HasForeignKey("ApplicationUserId");

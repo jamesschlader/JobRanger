@@ -28,7 +28,7 @@ namespace JobRanger.Pages.Agency
                 return NotFound();
             }
 
-            Agency = await _context.Agency.FirstOrDefaultAsync(m => m.Id == id);
+           Agency = await _context.Agency.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Agency == null)
             {

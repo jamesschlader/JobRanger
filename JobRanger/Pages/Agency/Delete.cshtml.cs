@@ -49,7 +49,7 @@ namespace JobRanger.Pages.Agency
 
             if (Agency != null)
             {
-                _context.Agency.Remove(Agency);
+               _context.Agency.Remove(Agency);
                 await _context.SaveChangesAsync();
             }
 

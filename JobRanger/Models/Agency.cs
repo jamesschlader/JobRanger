@@ -17,6 +17,6 @@ namespace JobRanger.Models
         public string WebSite { get; set; }
       public string IconSrc { get; set; }
         
-        public virtual ICollection<Job> Jobs { get; set; }
+        
     }
 }

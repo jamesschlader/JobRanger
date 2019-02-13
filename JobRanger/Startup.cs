@@ -50,11 +50,11 @@ namespace JobRanger
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Contacts");
-                    options.Conventions.AuthorizeFolder("/Agency");
+                    options.Conventions.AllowAnonymousToPage("/Agency");
                     options.Conventions.AuthorizeFolder("/Employer");
                     options.Conventions.AuthorizeFolder("/Interactions");
                     options.Conventions.AuthorizeFolder("/Job");
-                   options.Conventions.AuthorizeFolder("/Documents");
+                  
                     options.Conventions.AllowAnonymousToPage("/Index");
                     options.Conventions.AllowAnonymousToPage("/About");
                     options.Conventions.AllowAnonymousToPage("/Privacy");

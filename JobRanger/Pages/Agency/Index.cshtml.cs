@@ -21,16 +21,14 @@ namespace JobRanger.Pages.Agency
 
         public IList<Models.Agency> Agency { get;set; }
 
-        public IList<Models.Icons> Icons { get; set; }
+      
 
       public async Task OnGetAsync()
         {
            
-            Agency = await _context.Agency
-                .Include(e=>e.Jobs)
-               .ToListAsync();
+           Agency = await _context.Agency
+                .ToListAsync();
 
-            Icons = await _context.Icons.ToListAsync();
         }
     }
 }
