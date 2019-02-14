@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
@@ -41,7 +42,11 @@ namespace JobRanger.Models
 
         //public int JobId { get; set; }
 
-       public ICollection<Job> Jobs { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public ICollection<Job> Jobs { get; set; }
         public ICollection<Contact> Contacts { get; set; }
     }
 }

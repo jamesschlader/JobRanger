@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,16 +22,26 @@ namespace JobRanger.Pages.Interactions
         }
 
         public IList<Interaction> Interaction { get; set; }
-            
-        
-        public async Task OnGetAsync()
+
+        public ApplicationUser AppUser { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
         {
-            Interaction = await _context.Interactions
-                .Include(i => i.Job)
-                .ThenInclude(e=>e.Employer)
-                .Include(i => i.Type)
-                .OrderBy(i=>i.TargetTime)
-                .ToListAsync();
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                AppUser = await _context.ApplicationUser
+                    .Include(i => i.Interactions)
+                    .Include(j=>j.Jobs)
+                    .Include(e=>e.Employers)
+                    .FirstOrDefaultAsync(i => i.Id == userId);
+
+                return Page();
+            }
+
+            return Page();
+            
         }
     }
 }

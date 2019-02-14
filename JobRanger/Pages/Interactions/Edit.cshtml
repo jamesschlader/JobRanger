@@ -6,7 +6,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>@Html.DisplayFor(item=>item.Interaction.Type.Name)</h1>
+<h1>@Html.DisplayFor(item=>item.Interaction.InteractionTypeName)</h1>
 
 <h4>for @Html.DisplayFor(job=>job.Interaction.Job.Name) at @Html.DisplayFor(e=>e.Interaction.Job.Employer.Name)</h4>
 <p>@String.Format("Scheduled on {0:d}", Model.Interaction.TargetTime)  </p>
@@ -23,9 +23,25 @@
                 <span asp-validation-for="Interaction.TargetTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Interaction.Type.Name" class="control-label"></label>
-                <select asp-for="Interaction.InteractionTypesId" class="form-control" asp-items=@Model.InteractionTypeSelectList></select>
-                <span asp-validation-for="Interaction.Type.Name" class="text-danger"></span>
+                <label asp-for="Interaction.InteractionTypeName" class="control-label"></label>
+                <select asp-for="Interaction.InteractionTypeName" class="form-control">
+                    <option>Choose an option</option>
+                    <option>Applied</option>
+                    <option>Call</option>
+                    <option>Write</option>
+                    <option>Email</option>
+                    <option>Visit</option>
+                    <option>Interview</option>
+                    <option>Phone Interview</option>
+                    <option>Offer</option>
+                    <option>Accept</option>
+                    <option>Decline</option>
+                    <option>Will Follow Up</option>
+                    <option>Did Follow Up</option>
+                    <option>Request Info</option>
+                    <option>Connect on LinkedIn/email</option>
+                </select>
+                <span asp-validation-for="Interaction.InteractionTypeName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Interaction.Notes" class="control-label"></label>

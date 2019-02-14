@@ -19,7 +19,6 @@ namespace JobRanger.Data
         public DbSet<JobRanger.Models.Job> Job { get; set; }
         public DbSet<JobRanger.Models.Contact> Contact { get; set; }
         public DbSet<JobRanger.Models.Interaction> Interactions { get; set; }
-        public DbSet<JobRanger.Models.InteractionTypes> InteractionTypes { get; set; }
         public DbSet<JobRanger.Models.ApplicationUser> ApplicationUser { get; set; }
        
     

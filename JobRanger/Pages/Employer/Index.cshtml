@@ -13,7 +13,7 @@
     <a asp-page="Create">Create New</a>
 </p>
 
-@foreach (var item in Model.Employer)
+@foreach (var item in Model.AppUser.Employers)
 {
     <div class="card m-3 p-2" style="width: auto; display: inline-block">
         <div class="card-body">

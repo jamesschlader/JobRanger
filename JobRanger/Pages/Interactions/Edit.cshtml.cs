@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,7 +13,7 @@ using JobRanger.Models;
 
 namespace JobRanger.Pages.Interactions
 {
-    public class EditModel : InteractionTypesPageModel
+    public class EditModel : PageModel
     {
         private readonly JobRanger.Data.ApplicationDbContext _context;
 
@@ -33,7 +35,7 @@ namespace JobRanger.Pages.Interactions
             Interaction = await _context.Interactions
                 .Include(i => i.Job)
                 .ThenInclude(e=>e.Employer)
-                .Include(i => i.Type).FirstOrDefaultAsync(m => m.Id == id);
+             .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Interaction == null)
             {
@@ -42,9 +44,6 @@ namespace JobRanger.Pages.Interactions
 
             {
 
-                PopulateInteractionTypesDropDownList(_context);
-                ViewData["JobId"] = new SelectList(_context.Job, "Id", "Name");
-                ViewData["InteractionTypesId"] = new SelectList(_context.InteractionTypes, "Id", "Id");
                 return Page();
             }
         }
@@ -55,6 +54,11 @@ namespace JobRanger.Pages.Interactions
             {
                 return Page();
             }
+
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+          Interaction.ApplicationUserId = userId;
 
             _context.Attach(Interaction).State = EntityState.Modified;
 

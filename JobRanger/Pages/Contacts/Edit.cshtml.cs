@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -47,6 +48,10 @@ namespace JobRanger.Pages.Contacts
             {
                 return Page();
             }
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            Contact.ApplicationUserId = userId;
 
             _context.Attach(Contact).State = EntityState.Modified;
 

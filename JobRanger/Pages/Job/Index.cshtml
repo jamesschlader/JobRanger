@@ -12,80 +12,83 @@
         <a asp-page="Create">Create New</a>
     </p>
 
-    <div class="table-responsive-sm">
-        <table class="table table-striped table-responsive-sm">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Job[0].Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Job[0].Number)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Job[0].Employer.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Job[0].Description)
-                    </th>
-                    <th>
-                           @Html.DisplayNameFor(model => model.Job[0].Interactions)
-                    </th>
+<div class="table-responsive-sm">
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Job)
+    <table class="table table-striped table-responsive-sm">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Job[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job[0].Employer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job[0].Interactions)
+            </th>
+
+        </tr>
+
+        </thead>
+        <tbody>
+        @foreach (var item in Model.AppUser.Jobs)
+        {
+            <tr>
+                <td>
+                    <h4> @Html.DisplayFor(modelItem => item.Name)</h4>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    <a asp-page="../Employer/Details" asp-route-id="@item.EmployerId"><h4>@Html.DisplayFor(modelItem => item.Employer.Name)</h4></a>
+
+                </td>
+                <td>
+                    <p style="width: 100%; height: 100px; overflow: auto"> @Html.DisplayFor(model => item.Description)</p>
+
+                </td>
+
+                @if (item.Interactions.Count > 0)
                 {
-                    <tr>
-                        <td>
-                            <h4> @Html.DisplayFor(modelItem => item.Name)</h4>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Number)
-                        </td>
-                        <td>
-                            <a asp-page="../Employer/Details" asp-route-id="@item.EmployerId"><h4>@Html.DisplayFor(modelItem => item.Employer.Name)</h4></a>
-
-                        </td>
-                        <td>
-                            <p style="width: 100%; height: 100px;overflow: auto"> @Html.DisplayFor(model => item.Description)</p>
-
-                        </td>
-
-                        @if (item.Interactions.Count > 0)
+                    <td>
+                        @foreach (var interaction in item.Interactions)
                         {
-                            <td>
-                                @foreach (var interaction in item.Interactions)
-                                {
-                                    <a asp-page="../Interactions/Details" asp-route-id="@interaction.Id">@Html.DisplayFor(modelItem => interaction.Type.Name)</a> <span class="tab-content"> @Html.DisplayFor(modelItem => interaction.TargetTime)</span>
-                                    <br />
-                                }
-                            </td>
+                            <a asp-page="../Interactions/Details" asp-route-id="@interaction.Id">@Html.DisplayFor(modelItem => interaction.InteractionTypeName)</a>
+                            <span class="tab-content"> @Html.DisplayFor(modelItem => interaction.TargetTime)</span>
+                            <br/>
                         }
-                        else
-                        {
-                            <td>
-                                No Interactions
-                            </td>
-                        }
-
-                    </tr>
-                    <tr>
-
-                        <td colspan="3">
-                            <a asp-page="../Interactions/Create" asp-route-id="@item.Id">Add Action</a> |
-                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-
-                        </td>
-                    </tr>
-
+                    </td>
                 }
-            </tbody>
+                else
+                {
+                    <td>
+                        No Interactions
+                    </td>
+                }
+
+            </tr>
+            <tr>
+
+                <td colspan="3">
+                    <a asp-page="../Interactions/Create" asp-route-id="@item.Id">Add Action</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+
+                </td>
+            </tr>
+
+        }
+        </tbody>
 
 
-        </table>
+    </table>
 
-    </div>
+</div>

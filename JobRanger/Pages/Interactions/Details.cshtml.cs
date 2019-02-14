@@ -31,7 +31,7 @@ namespace JobRanger.Pages.Interactions
             Interaction = await _context.Interactions
                 .Include(i => i.Job)
                 .ThenInclude(j=>j.Employer)
-                .Include(i => i.Type).FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Interaction == null)
             {

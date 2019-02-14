@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,8 +22,25 @@ namespace JobRanger.Pages.Contacts
 
         public IList<Contact> Contact { get;set; }
 
-        public async Task OnGetAsync()
+        public ApplicationUser AppUser { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                AppUser = await _context.ApplicationUser
+                    .Include(i => i.Employers)
+                    .Include(c=>c.Contacts)
+                    .FirstOrDefaultAsync(i => i.Id == userId);
+
+                return Page();
+            }
+
+            return Page();
+
+
             Contact = await _context.Contact
                 .Include(c => c.Employer).ToListAsync();
         }

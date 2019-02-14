@@ -4,14 +4,16 @@ using JobRanger.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JobRanger.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190214214457_KilledInteractiontypes")]
+    partial class KilledInteractiontypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +107,8 @@ namespace JobRanger.Data.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("ApplicationUserId");
+
+                    b.Property<string>("ApplicationUserName");
 
                     b.Property<string>("City")
                         .HasMaxLength(50);
@@ -340,7 +344,7 @@ namespace JobRanger.Data.Migrations
             modelBuilder.Entity("JobRanger.Models.Contact", b =>
                 {
                     b.HasOne("JobRanger.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Contacts")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("JobRanger.Models.Employer", "Employer")

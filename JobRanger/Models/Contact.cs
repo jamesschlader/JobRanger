@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace JobRanger.Models
 {
@@ -39,6 +41,10 @@ namespace JobRanger.Models
         [RegularExpression("\\d{5}", ErrorMessage = "Please enter valid Zip Code")]
         [DataType(DataType.PostalCode)]
         public string ZipCode { get; set; }
+
+        [ForeignKey("ApplicationUserId")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         [DisplayName("Employer")]
         public int EmployerId { get; set; }

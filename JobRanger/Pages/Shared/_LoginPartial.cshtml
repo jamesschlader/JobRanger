@@ -1,13 +1,20 @@
+@using System.Security.Claims
 @using JobRanger.Models
 @using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@using Remotion.Linq.Clauses
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
-{
+{ 
+    ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+    string firstName = user.FirstName;
+
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @firstName!</a>
     </li>
     <li class="nav-item">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >

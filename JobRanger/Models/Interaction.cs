@@ -19,8 +19,12 @@ namespace JobRanger.Models
 
         public string Notes { get; set; }
 
-       public int InteractionTypesId { get; set; }
-        public virtual InteractionTypes Type { get; set; }
+       //public int InteractionTypesId { get; set; }
+       public string InteractionTypeName { get; set; }
+       
+        [ForeignKey("ApplicationUserId")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         public int JobId { get; set; }
         public virtual Job Job { get; set; }

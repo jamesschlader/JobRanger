@@ -4,14 +4,16 @@ using JobRanger.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JobRanger.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190214210256_SwitchInteractionIdForName")]
+    partial class SwitchInteractionIdForName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,6 +108,8 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
+                    b.Property<string>("ApplicationUserName");
+
                     b.Property<string>("City")
                         .HasMaxLength(50);
 
@@ -184,13 +188,30 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<DateTime>("TargetTime");
 
+                    b.Property<int?>("TypeId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("JobId");
 
+                    b.HasIndex("TypeId");
+
                     b.ToTable("Interactions");
+                });
+
+            modelBuilder.Entity("JobRanger.Models.InteractionTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InteractionTypes");
                 });
 
             modelBuilder.Entity("JobRanger.Models.Job", b =>
@@ -340,7 +361,7 @@ namespace JobRanger.Data.Migrations
             modelBuilder.Entity("JobRanger.Models.Contact", b =>
                 {
                     b.HasOne("JobRanger.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Contacts")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("JobRanger.Models.Employer", "Employer")
@@ -366,6 +387,10 @@ namespace JobRanger.Data.Migrations
                         .WithMany("Interactions")
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JobRanger.Models.InteractionTypes", "Type")
+                        .WithMany("Interactions")
+                        .HasForeignKey("TypeId");
                 });
 
             modelBuilder.Entity("JobRanger.Models.Job", b =>

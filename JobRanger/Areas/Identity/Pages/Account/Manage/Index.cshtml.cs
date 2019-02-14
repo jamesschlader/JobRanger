@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -56,7 +57,8 @@ namespace JobRanger.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
+
+           if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
@@ -64,13 +66,16 @@ namespace JobRanger.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
+            
             Username = userName;
 
             Input = new InputModel
             {
                 Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+              FirstName = user.FirstName,
+              LastName = user.LastName
+
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
@@ -112,6 +117,11 @@ namespace JobRanger.Areas.Identity.Pages.Account.Manage
                     throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
+
+           user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;
+
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

@@ -20,13 +20,18 @@
                 <span asp-validation-for="Contact.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Contact.Title" class="control-label"></label>
+                <input asp-for="Contact.Title" class="form-control" />
+                <span asp-validation-for="Contact.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Contact.Email" class="control-label"></label>
                 <input asp-for="Contact.Email" class="form-control" />
                 <span asp-validation-for="Contact.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Contact.PhoneNumber" class="control-label"></label>
-                <input asp-for="Contact.PhoneNumber" class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="(123) 456-7890"/>
+                <input asp-for="Contact.PhoneNumber" class="form-control" type="tel" placeholder="(123) 456-7890" />
                 <span asp-validation-for="Contact.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -56,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Contact.EmployerId" class="control-label"></label>
-                <select asp-for="Contact.EmployerId" class ="form-control" asp-items="ViewBag.EmployerId"></select>
+                <select asp-for="Contact.EmployerId" class="form-control" asp-items="ViewBag.EmployerId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

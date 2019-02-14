@@ -17,9 +17,11 @@ namespace JobRanger.Models
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        
         public virtual ICollection<Employer> Employers { get; set; }
         public virtual ICollection<Interaction> Interactions { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
+        public virtual ICollection<Contact> Contacts { get; set; }
+
+       
     }
 }

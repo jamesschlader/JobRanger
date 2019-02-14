@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -27,18 +29,47 @@ namespace JobRanger.Pages.Contacts
 
         [BindProperty]
         public Contact Contact { get; set; }
-
+       
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+
+           if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Contact.Add(Contact);
-            await _context.SaveChangesAsync();
+            var emptyContact = new Models.Contact();
 
-            return RedirectToPage("./Index");
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            emptyContact.ApplicationUserId = userId;
+
+           
+
+            if (await TryUpdateModelAsync<Models.Contact>(
+            emptyContact,
+            "contact",
+            c=>c.Name,
+            c=>c.Address1,
+            c=>c.Address2,
+            c=>c.City,
+            c=>c.Email,
+            c=>c.EmployerId,
+            c=>c.PhoneNumber,
+            c=>c.State,
+            c=>c.ZipCode,
+            c=>c.Title
+                ))
+            {
+                
+                _context.Contact.Add(emptyContact);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+
+            return Page();
+
         }
     }
 }
