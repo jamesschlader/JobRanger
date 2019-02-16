@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using JobRanger.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,9 +15,7 @@ namespace JobRanger.Pages.Job
         {
             var employersQuery = from employer in context.Employer orderby employer.Name select employer;
 
-            EmployerNameSelectList = new SelectList(employersQuery.AsNoTracking(),"Id", "Name", selectEmployer);
+            EmployerNameSelectList = new SelectList(employersQuery.AsNoTracking(), "Id", "Name", selectEmployer);
         }
-
-        
     }
 }

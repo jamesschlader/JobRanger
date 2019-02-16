@@ -176,6 +176,8 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
+                    b.Property<bool>("Finished");
+
                     b.Property<string>("InteractionTypeName");
 
                     b.Property<int>("JobId");
@@ -183,6 +185,8 @@ namespace JobRanger.Data.Migrations
                     b.Property<string>("Notes");
 
                     b.Property<DateTime>("TargetTime");
+
+                    b.Property<bool>("ToDo");
 
                     b.HasKey("Id");
 

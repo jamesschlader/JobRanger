@@ -1,34 +1,30 @@
-@using System.Security.Claims
 @using JobRanger.Models
-@using Microsoft.AspNetCore.Identity
-@using Microsoft.EntityFrameworkCore
-@using Remotion.Linq.Clauses
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{ 
-    ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
-    string firstName = user.FirstName;
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var user = await UserManager.FindByNameAsync(User.Identity.Name);
+        var firstName = user.FirstName;
 
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @firstName!</a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+        <li class="nav-item p-3">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" id="display-user" title="Manage"><span style="color: darkgreen">RANGER</span> @firstName</a>
+        </li>
+        <li class="nav-item p-3">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new {area = ""})" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item p-3 ">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item p-3">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
 </ul>

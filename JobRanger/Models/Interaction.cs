@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JobRanger.Models
 {
@@ -17,17 +14,24 @@ namespace JobRanger.Models
         [DisplayName("Action Date")]
         public DateTime TargetTime { get; set; }
 
+        [Required]
+        [DisplayName("To Do")]
+       public bool ToDo { get; set; }
+        
+       [DefaultValue(false)]
+      public bool Finished { get; set; }
+
         public string Notes { get; set; }
 
-       //public int InteractionTypesId { get; set; }
-       public string InteractionTypeName { get; set; }
-       
+        [DisplayName("Interaction Type")]
+        public string InteractionTypeName { get; set; }
+
         [ForeignKey("ApplicationUserId")]
         public string ApplicationUserId { get; set; }
+
         public ApplicationUser ApplicationUser { get; set; }
 
         public int JobId { get; set; }
         public virtual Job Job { get; set; }
-        
     }
 }

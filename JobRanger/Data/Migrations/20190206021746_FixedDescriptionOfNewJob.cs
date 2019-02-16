@@ -7,8 +7,8 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "InteractionTypes",
+                "Name",
+                "InteractionTypes",
                 nullable: true,
                 oldClrType: typeof(string));
         }
@@ -16,8 +16,8 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "InteractionTypes",
+                "Name",
+                "InteractionTypes",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);

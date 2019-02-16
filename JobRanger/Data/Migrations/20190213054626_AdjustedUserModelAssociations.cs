@@ -7,40 +7,40 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "ApplicationUserUserName",
-                table: "Job",
-                newName: "ApplicationUserName");
+                "ApplicationUserUserName",
+                "Job",
+                "ApplicationUserName");
 
             migrationBuilder.RenameColumn(
-                name: "ApplicationUserUserName",
-                table: "Interactions",
-                newName: "ApplicationUserName");
+                "ApplicationUserUserName",
+                "Interactions",
+                "ApplicationUserName");
 
             migrationBuilder.RenameColumn(
-                name: "ApplicationUserUserName",
-                table: "Employer",
-                newName: "ApplicationUserName");
+                "ApplicationUserUserName",
+                "Employer",
+                "ApplicationUserName");
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Contact",
+                "ApplicationUserId",
+                "Contact",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserName",
-                table: "Contact",
+                "ApplicationUserName",
+                "Contact",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contact_ApplicationUserId",
-                table: "Contact",
-                column: "ApplicationUserId");
+                "IX_Contact_ApplicationUserId",
+                "Contact",
+                "ApplicationUserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Contact_AspNetUsers_ApplicationUserId",
-                table: "Contact",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Contact_AspNetUsers_ApplicationUserId",
+                "Contact",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -48,35 +48,35 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Contact_AspNetUsers_ApplicationUserId",
-                table: "Contact");
+                "FK_Contact_AspNetUsers_ApplicationUserId",
+                "Contact");
 
             migrationBuilder.DropIndex(
-                name: "IX_Contact_ApplicationUserId",
-                table: "Contact");
+                "IX_Contact_ApplicationUserId",
+                "Contact");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Contact");
+                "ApplicationUserId",
+                "Contact");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserName",
-                table: "Contact");
+                "ApplicationUserName",
+                "Contact");
 
             migrationBuilder.RenameColumn(
-                name: "ApplicationUserName",
-                table: "Job",
-                newName: "ApplicationUserUserName");
+                "ApplicationUserName",
+                "Job",
+                "ApplicationUserUserName");
 
             migrationBuilder.RenameColumn(
-                name: "ApplicationUserName",
-                table: "Interactions",
-                newName: "ApplicationUserUserName");
+                "ApplicationUserName",
+                "Interactions",
+                "ApplicationUserUserName");
 
             migrationBuilder.RenameColumn(
-                name: "ApplicationUserName",
-                table: "Employer",
-                newName: "ApplicationUserUserName");
+                "ApplicationUserName",
+                "Employer",
+                "ApplicationUserUserName");
         }
     }
 }

@@ -7,24 +7,24 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IconSrc",
-                table: "Agency");
+                "IconSrc",
+                "Agency");
 
             migrationBuilder.AddColumn<int>(
-                name: "IconSrcId",
-                table: "Agency",
+                "IconSrcId",
+                "Agency",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agency_IconSrcId",
-                table: "Agency",
-                column: "IconSrcId");
+                "IX_Agency_IconSrcId",
+                "Agency",
+                "IconSrcId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_Icons_IconSrcId",
-                table: "Agency",
-                column: "IconSrcId",
-                principalTable: "Icons",
+                "FK_Agency_Icons_IconSrcId",
+                "Agency",
+                "IconSrcId",
+                "Icons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -32,20 +32,20 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_Icons_IconSrcId",
-                table: "Agency");
+                "FK_Agency_Icons_IconSrcId",
+                "Agency");
 
             migrationBuilder.DropIndex(
-                name: "IX_Agency_IconSrcId",
-                table: "Agency");
+                "IX_Agency_IconSrcId",
+                "Agency");
 
             migrationBuilder.DropColumn(
-                name: "IconSrcId",
-                table: "Agency");
+                "IconSrcId",
+                "Agency");
 
             migrationBuilder.AddColumn<string>(
-                name: "IconSrc",
-                table: "Agency",
+                "IconSrc",
+                "Agency",
                 nullable: true);
         }
     }

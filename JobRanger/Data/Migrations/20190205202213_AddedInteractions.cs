@@ -8,11 +8,12 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Action",
-                columns: table => new
+                "Action",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Type = table.Column<int>(nullable: false),
                     JobId = table.Column<int>(nullable: true)
                 },
@@ -20,23 +21,23 @@ namespace JobRanger.Data.Migrations
                 {
                     table.PrimaryKey("PK_Action", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Action_Job_JobId",
-                        column: x => x.JobId,
-                        principalTable: "Job",
-                        principalColumn: "Id",
+                        "FK_Action_Job_JobId",
+                        x => x.JobId,
+                        "Job",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Action_JobId",
-                table: "Action",
-                column: "JobId");
+                "IX_Action_JobId",
+                "Action",
+                "JobId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Action");
+                "Action");
         }
     }
 }

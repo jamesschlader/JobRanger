@@ -7,38 +7,38 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "AgencyId",
-                table: "Job",
+                "AgencyId",
+                "Job",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "EmployerId",
-                table: "Job",
+                "EmployerId",
+                "Job",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_AgencyId",
-                table: "Job",
-                column: "AgencyId");
+                "IX_Job_AgencyId",
+                "Job",
+                "AgencyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_EmployerId",
-                table: "Job",
-                column: "EmployerId");
+                "IX_Job_EmployerId",
+                "Job",
+                "EmployerId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Job_Agency_AgencyId",
-                table: "Job",
-                column: "AgencyId",
-                principalTable: "Agency",
+                "FK_Job_Agency_AgencyId",
+                "Job",
+                "AgencyId",
+                "Agency",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Job_Employer_EmployerId",
-                table: "Job",
-                column: "EmployerId",
-                principalTable: "Employer",
+                "FK_Job_Employer_EmployerId",
+                "Job",
+                "EmployerId",
+                "Employer",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -46,28 +46,28 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Job_Agency_AgencyId",
-                table: "Job");
+                "FK_Job_Agency_AgencyId",
+                "Job");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Job_Employer_EmployerId",
-                table: "Job");
+                "FK_Job_Employer_EmployerId",
+                "Job");
 
             migrationBuilder.DropIndex(
-                name: "IX_Job_AgencyId",
-                table: "Job");
+                "IX_Job_AgencyId",
+                "Job");
 
             migrationBuilder.DropIndex(
-                name: "IX_Job_EmployerId",
-                table: "Job");
+                "IX_Job_EmployerId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "AgencyId",
-                table: "Job");
+                "AgencyId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "EmployerId",
-                table: "Job");
+                "EmployerId",
+                "Job");
         }
     }
 }

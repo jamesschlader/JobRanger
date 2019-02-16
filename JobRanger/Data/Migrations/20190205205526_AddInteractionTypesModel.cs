@@ -8,37 +8,35 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Type",
-                table: "Action");
+                "Type",
+                "Action");
 
             migrationBuilder.AddColumn<int>(
-                name: "TypeId",
-                table: "Action",
+                "TypeId",
+                "Action",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "InteractionTypes",
-                columns: table => new
+                "InteractionTypes",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InteractionTypes", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_InteractionTypes", x => x.Id); });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Action_TypeId",
-                table: "Action",
-                column: "TypeId");
+                "IX_Action_TypeId",
+                "Action",
+                "TypeId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Action_InteractionTypes_TypeId",
-                table: "Action",
-                column: "TypeId",
-                principalTable: "InteractionTypes",
+                "FK_Action_InteractionTypes_TypeId",
+                "Action",
+                "TypeId",
+                "InteractionTypes",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -46,23 +44,23 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Action_InteractionTypes_TypeId",
-                table: "Action");
+                "FK_Action_InteractionTypes_TypeId",
+                "Action");
 
             migrationBuilder.DropTable(
-                name: "InteractionTypes");
+                "InteractionTypes");
 
             migrationBuilder.DropIndex(
-                name: "IX_Action_TypeId",
-                table: "Action");
+                "IX_Action_TypeId",
+                "Action");
 
             migrationBuilder.DropColumn(
-                name: "TypeId",
-                table: "Action");
+                "TypeId",
+                "Action");
 
             migrationBuilder.AddColumn<int>(
-                name: "Type",
-                table: "Action",
+                "Type",
+                "Action",
                 nullable: false,
                 defaultValue: 0);
         }

@@ -9,34 +9,35 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_AspNetUsers_ApplicationUserId",
-                table: "Agency");
+                "FK_Agency_AspNetUsers_ApplicationUserId",
+                "Agency");
 
             migrationBuilder.DropTable(
-                name: "Document");
+                "Document");
 
             migrationBuilder.DropIndex(
-                name: "IX_Agency_ApplicationUserId",
-                table: "Agency");
+                "IX_Agency_ApplicationUserId",
+                "Agency");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Agency");
+                "ApplicationUserId",
+                "Agency");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Agency",
+                "ApplicationUserId",
+                "Agency",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Document",
-                columns: table => new
+                "Document",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     ContentSize = table.Column<long>(nullable: false),
@@ -48,28 +49,28 @@ namespace JobRanger.Data.Migrations
                 {
                     table.PrimaryKey("PK_Document", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Document_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_Document_AspNetUsers_ApplicationUserId",
+                        x => x.ApplicationUserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agency_ApplicationUserId",
-                table: "Agency",
-                column: "ApplicationUserId");
+                "IX_Agency_ApplicationUserId",
+                "Agency",
+                "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Document_ApplicationUserId",
-                table: "Document",
-                column: "ApplicationUserId");
+                "IX_Document_ApplicationUserId",
+                "Document",
+                "ApplicationUserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_AspNetUsers_ApplicationUserId",
-                table: "Agency",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Agency_AspNetUsers_ApplicationUserId",
+                "Agency",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

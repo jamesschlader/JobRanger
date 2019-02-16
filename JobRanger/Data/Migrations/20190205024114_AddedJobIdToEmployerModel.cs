@@ -7,8 +7,8 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "JobId",
-                table: "Employer",
+                "JobId",
+                "Employer",
                 nullable: false,
                 defaultValue: 0);
         }
@@ -16,8 +16,8 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "JobId",
-                table: "Employer");
+                "JobId",
+                "Employer");
         }
     }
 }

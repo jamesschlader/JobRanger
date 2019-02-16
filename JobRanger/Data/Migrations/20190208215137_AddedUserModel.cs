@@ -8,11 +8,12 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
+                "User",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     OwnerId = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
@@ -21,16 +22,13 @@ namespace JobRanger.Data.Migrations
                     Zip = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_User", x => x.Id); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User");
+                "User");
         }
     }
 }

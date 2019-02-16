@@ -7,25 +7,25 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "ContactId",
-                table: "Job",
+                "ContactId",
+                "Job",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "Title",
-                table: "Contact",
+                "Title",
+                "Contact",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_ContactId",
-                table: "Job",
-                column: "ContactId");
+                "IX_Job_ContactId",
+                "Job",
+                "ContactId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Job_Contact_ContactId",
-                table: "Job",
-                column: "ContactId",
-                principalTable: "Contact",
+                "FK_Job_Contact_ContactId",
+                "Job",
+                "ContactId",
+                "Contact",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -33,20 +33,20 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Job_Contact_ContactId",
-                table: "Job");
+                "FK_Job_Contact_ContactId",
+                "Job");
 
             migrationBuilder.DropIndex(
-                name: "IX_Job_ContactId",
-                table: "Job");
+                "IX_Job_ContactId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "ContactId",
-                table: "Job");
+                "ContactId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "Title",
-                table: "Contact");
+                "Title",
+                "Contact");
         }
     }
 }

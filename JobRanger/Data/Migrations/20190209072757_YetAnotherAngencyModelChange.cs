@@ -7,45 +7,45 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_Icons_IconsId",
-                table: "Agency");
+                "FK_Agency_Icons_IconsId",
+                "Agency");
 
             migrationBuilder.DropIndex(
-                name: "IX_Agency_IconsId",
-                table: "Agency");
+                "IX_Agency_IconsId",
+                "Agency");
 
             migrationBuilder.DropColumn(
-                name: "IconsId",
-                table: "Agency");
+                "IconsId",
+                "Agency");
 
             migrationBuilder.AddColumn<string>(
-                name: "IconSrc",
-                table: "Agency",
+                "IconSrc",
+                "Agency",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IconSrc",
-                table: "Agency");
+                "IconSrc",
+                "Agency");
 
             migrationBuilder.AddColumn<int>(
-                name: "IconsId",
-                table: "Agency",
+                "IconsId",
+                "Agency",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agency_IconsId",
-                table: "Agency",
-                column: "IconsId");
+                "IX_Agency_IconsId",
+                "Agency",
+                "IconsId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_Icons_IconsId",
-                table: "Agency",
-                column: "IconsId",
-                principalTable: "Icons",
+                "FK_Agency_Icons_IconsId",
+                "Agency",
+                "IconsId",
+                "Icons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

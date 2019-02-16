@@ -1,5 +1,4 @@
-﻿using System.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JobRanger.Data.Migrations
 {
@@ -23,7 +22,6 @@ namespace JobRanger.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
         }
     }
 }

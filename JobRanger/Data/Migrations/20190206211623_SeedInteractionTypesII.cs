@@ -6,7 +6,6 @@ namespace JobRanger.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
             migrationBuilder.Sql("INSERT INTO InteractionTypes (Name) VALUES ('Call')");
             migrationBuilder.Sql("INSERT INTO InteractionTypes (Name) VALUES ('Write')");
             migrationBuilder.Sql("INSERT INTO InteractionTypes (Name) VALUES ('Email')");
@@ -23,7 +22,6 @@ namespace JobRanger.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
         }
     }
 }

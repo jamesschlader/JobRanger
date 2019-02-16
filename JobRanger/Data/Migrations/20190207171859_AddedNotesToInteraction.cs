@@ -7,16 +7,16 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Notes",
-                table: "Interactions",
+                "Notes",
+                "Interactions",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Notes",
-                table: "Interactions");
+                "Notes",
+                "Interactions");
         }
     }
 }

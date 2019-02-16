@@ -7,8 +7,8 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "ZipCode",
-                table: "Employer",
+                "ZipCode",
+                "Employer",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 5,
@@ -18,8 +18,8 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "ZipCode",
-                table: "Employer",
+                "ZipCode",
+                "Employer",
                 maxLength: 5,
                 nullable: true,
                 oldClrType: typeof(string),

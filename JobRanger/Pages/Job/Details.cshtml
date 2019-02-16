@@ -10,8 +10,8 @@
 <h4>at @Html.DisplayFor(model => model.Job.Employer.Name)</h4>
 
 <div>
-    
-    <hr />
+
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Job.Name)
@@ -29,7 +29,7 @@
             @Html.DisplayNameFor(model => model.Job.Description)
         </dt>
         <dd class="col-sm-10">
-            <p style="width: 100%; height: 100px;overflow: auto"> @Html.DisplayFor(model => model.Job.Description)</p>
+            <p style="height: 100px; overflow: auto; width: 100%;"> @Html.DisplayFor(model => model.Job.Description)</p>
 
         </dd>
     </dl>
@@ -47,7 +47,7 @@
                     Notes
                 </th>
             </tr>
-            
+
             </thead>
 
             @foreach (var item in Model.Job.Interactions)
@@ -71,10 +71,10 @@
                     <a asp-page="../Interactions/Create" asp-route-id="@Model.Job.Id">Add Action</a>
                 </td>
             </tr>
-            
+
         </table>
     </div>
-        
+
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Job.Id">Edit</a> |

@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using JobRanger.Data;
+using JobRanger.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using JobRanger.Data;
-using JobRanger.Models;
 
 namespace JobRanger.Pages.Contacts
 {
     public class DetailsModel : PageModel
     {
-        private readonly JobRanger.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(JobRanger.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -23,18 +20,12 @@ namespace JobRanger.Pages.Contacts
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             Contact = await _context.Contact
                 .Include(c => c.Employer).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Contact == null)
-            {
-                return NotFound();
-            }
+            if (Contact == null) return NotFound();
             return Page();
         }
     }

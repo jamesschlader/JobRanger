@@ -7,34 +7,34 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserUserName",
-                table: "Job",
+                "ApplicationUserUserName",
+                "Job",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserUserName",
-                table: "Interactions",
+                "ApplicationUserUserName",
+                "Interactions",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserUserName",
-                table: "Employer",
+                "ApplicationUserUserName",
+                "Employer",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "ApplicationUserUserName",
-                table: "Job");
+                "ApplicationUserUserName",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserUserName",
-                table: "Interactions");
+                "ApplicationUserUserName",
+                "Interactions");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserUserName",
-                table: "Employer");
+                "ApplicationUserUserName",
+                "Employer");
         }
     }
 }

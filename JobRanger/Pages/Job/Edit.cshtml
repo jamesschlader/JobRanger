@@ -6,23 +6,25 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1 class="display-4" ><strong>@Html.DisplayFor(model => model.Job.Name)</strong></h1>
-<h2>at @Html.DisplayFor(model=>model.Job.Employer.Name)</h2>
-<hr />
+<h1 class="display-4">
+    <strong>@Html.DisplayFor(model => model.Job.Name)</strong>
+</h1>
+<h2>at @Html.DisplayFor(model => model.Job.Employer.Name)</h2>
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Job.Id" />
-            <input type="hidden" asp-for="Job.EmployerId" />
+            <input type="hidden" asp-for="Job.Id"/>
+            <input type="hidden" asp-for="Job.EmployerId"/>
             <div class="form-group">
                 <label asp-for="Job.Name" class="control-label"></label>
-                <input asp-for="Job.Name" class="form-control" />
+                <input asp-for="Job.Name" class="form-control"/>
                 <span asp-validation-for="Job.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Job.Number" class="control-label"></label>
-                <input asp-for="Job.Number" class="form-control" />
+                <input asp-for="Job.Number" class="form-control"/>
                 <span asp-validation-for="Job.Number" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,7 +33,7 @@
                 <span asp-validation-for="Job.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -43,5 +45,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

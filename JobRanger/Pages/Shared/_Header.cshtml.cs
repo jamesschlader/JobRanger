@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace JobRanger.Pages
+namespace JobRanger.Pages.Shared
 {
-    public class AboutModel : PageModel
+    public class _HeaderModel : PageModel
     {
         public void OnGet()
         {

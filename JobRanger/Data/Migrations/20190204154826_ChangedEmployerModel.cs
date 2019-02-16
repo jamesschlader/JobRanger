@@ -7,31 +7,31 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "ZipCode",
-                table: "Employer",
+                "ZipCode",
+                "Employer",
                 maxLength: 5,
                 nullable: false,
                 oldClrType: typeof(byte));
 
             migrationBuilder.AlterColumn<string>(
-                name: "City",
-                table: "Employer",
+                "City",
+                "Employer",
                 maxLength: 50,
                 nullable: true,
                 oldClrType: typeof(string),
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Address2",
-                table: "Employer",
+                "Address2",
+                "Employer",
                 maxLength: 50,
                 nullable: true,
                 oldClrType: typeof(string),
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Address1",
-                table: "Employer",
+                "Address1",
+                "Employer",
                 maxLength: 75,
                 nullable: true,
                 oldClrType: typeof(string),
@@ -41,31 +41,31 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<byte>(
-                name: "ZipCode",
-                table: "Employer",
+                "ZipCode",
+                "Employer",
                 nullable: false,
                 oldClrType: typeof(int),
                 oldMaxLength: 5);
 
             migrationBuilder.AlterColumn<string>(
-                name: "City",
-                table: "Employer",
+                "City",
+                "Employer",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50,
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Address2",
-                table: "Employer",
+                "Address2",
+                "Employer",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50,
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Address1",
-                table: "Employer",
+                "Address1",
+                "Employer",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 75,

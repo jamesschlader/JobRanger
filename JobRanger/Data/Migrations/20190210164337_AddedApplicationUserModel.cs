@@ -7,103 +7,103 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Job",
+                "ApplicationUserId",
+                "Job",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Interactions",
+                "ApplicationUserId",
+                "Interactions",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Employer",
+                "ApplicationUserId",
+                "Employer",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Document",
+                "ApplicationUserId",
+                "Document",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "FirstName",
-                table: "AspNetUsers",
+                "FirstName",
+                "AspNetUsers",
                 nullable: false,
                 defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
-                name: "LastName",
-                table: "AspNetUsers",
+                "LastName",
+                "AspNetUsers",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ApplicationUserId",
-                table: "Agency",
+                "ApplicationUserId",
+                "Agency",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_ApplicationUserId",
-                table: "Job",
-                column: "ApplicationUserId");
+                "IX_Job_ApplicationUserId",
+                "Job",
+                "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Interactions_ApplicationUserId",
-                table: "Interactions",
-                column: "ApplicationUserId");
+                "IX_Interactions_ApplicationUserId",
+                "Interactions",
+                "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employer_ApplicationUserId",
-                table: "Employer",
-                column: "ApplicationUserId");
+                "IX_Employer_ApplicationUserId",
+                "Employer",
+                "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Document_ApplicationUserId",
-                table: "Document",
-                column: "ApplicationUserId");
+                "IX_Document_ApplicationUserId",
+                "Document",
+                "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agency_ApplicationUserId",
-                table: "Agency",
-                column: "ApplicationUserId");
+                "IX_Agency_ApplicationUserId",
+                "Agency",
+                "ApplicationUserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_AspNetUsers_ApplicationUserId",
-                table: "Agency",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Agency_AspNetUsers_ApplicationUserId",
+                "Agency",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Document_AspNetUsers_ApplicationUserId",
-                table: "Document",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Document_AspNetUsers_ApplicationUserId",
+                "Document",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Employer_AspNetUsers_ApplicationUserId",
-                table: "Employer",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Employer_AspNetUsers_ApplicationUserId",
+                "Employer",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Interactions_AspNetUsers_ApplicationUserId",
-                table: "Interactions",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Interactions_AspNetUsers_ApplicationUserId",
+                "Interactions",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Job_AspNetUsers_ApplicationUserId",
-                table: "Job",
-                column: "ApplicationUserId",
-                principalTable: "AspNetUsers",
+                "FK_Job_AspNetUsers_ApplicationUserId",
+                "Job",
+                "ApplicationUserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -111,72 +111,72 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_AspNetUsers_ApplicationUserId",
-                table: "Agency");
+                "FK_Agency_AspNetUsers_ApplicationUserId",
+                "Agency");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Document_AspNetUsers_ApplicationUserId",
-                table: "Document");
+                "FK_Document_AspNetUsers_ApplicationUserId",
+                "Document");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Employer_AspNetUsers_ApplicationUserId",
-                table: "Employer");
+                "FK_Employer_AspNetUsers_ApplicationUserId",
+                "Employer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Interactions_AspNetUsers_ApplicationUserId",
-                table: "Interactions");
+                "FK_Interactions_AspNetUsers_ApplicationUserId",
+                "Interactions");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Job_AspNetUsers_ApplicationUserId",
-                table: "Job");
+                "FK_Job_AspNetUsers_ApplicationUserId",
+                "Job");
 
             migrationBuilder.DropIndex(
-                name: "IX_Job_ApplicationUserId",
-                table: "Job");
+                "IX_Job_ApplicationUserId",
+                "Job");
 
             migrationBuilder.DropIndex(
-                name: "IX_Interactions_ApplicationUserId",
-                table: "Interactions");
+                "IX_Interactions_ApplicationUserId",
+                "Interactions");
 
             migrationBuilder.DropIndex(
-                name: "IX_Employer_ApplicationUserId",
-                table: "Employer");
+                "IX_Employer_ApplicationUserId",
+                "Employer");
 
             migrationBuilder.DropIndex(
-                name: "IX_Document_ApplicationUserId",
-                table: "Document");
+                "IX_Document_ApplicationUserId",
+                "Document");
 
             migrationBuilder.DropIndex(
-                name: "IX_Agency_ApplicationUserId",
-                table: "Agency");
+                "IX_Agency_ApplicationUserId",
+                "Agency");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Job");
+                "ApplicationUserId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Interactions");
+                "ApplicationUserId",
+                "Interactions");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Employer");
+                "ApplicationUserId",
+                "Employer");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Document");
+                "ApplicationUserId",
+                "Document");
 
             migrationBuilder.DropColumn(
-                name: "FirstName",
-                table: "AspNetUsers");
+                "FirstName",
+                "AspNetUsers");
 
             migrationBuilder.DropColumn(
-                name: "LastName",
-                table: "AspNetUsers");
+                "LastName",
+                "AspNetUsers");
 
             migrationBuilder.DropColumn(
-                name: "ApplicationUserId",
-                table: "Agency");
+                "ApplicationUserId",
+                "Agency");
         }
     }
 }

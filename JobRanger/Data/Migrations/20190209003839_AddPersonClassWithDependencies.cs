@@ -9,36 +9,37 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "PersonId",
-                table: "Job",
+                "PersonId",
+                "Job",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "PersonId",
-                table: "Interactions",
+                "PersonId",
+                "Interactions",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "PersonId",
-                table: "Employer",
+                "PersonId",
+                "Employer",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "PersonId",
-                table: "Contact",
+                "PersonId",
+                "Contact",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "PersonId",
-                table: "Agency",
+                "PersonId",
+                "Agency",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Persons",
-                columns: table => new
+                "Persons",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
@@ -55,19 +56,20 @@ namespace JobRanger.Data.Migrations
                 {
                     table.PrimaryKey("PK_Persons", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Persons_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_Persons_AspNetUsers_UserId1",
+                        x => x.UserId1,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Document",
-                columns: table => new
+                "Document",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
                     ContentSize = table.Column<long>(nullable: false),
                     UploadDT = table.Column<DateTime>(nullable: false),
@@ -78,96 +80,96 @@ namespace JobRanger.Data.Migrations
                 {
                     table.PrimaryKey("PK_Document", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Document_Persons_PersonId",
-                        column: x => x.PersonId,
-                        principalTable: "Persons",
-                        principalColumn: "Id",
+                        "FK_Document_Persons_PersonId",
+                        x => x.PersonId,
+                        "Persons",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Document_Persons_PersonId1",
-                        column: x => x.PersonId1,
-                        principalTable: "Persons",
-                        principalColumn: "Id",
+                        "FK_Document_Persons_PersonId1",
+                        x => x.PersonId1,
+                        "Persons",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_PersonId",
-                table: "Job",
-                column: "PersonId");
+                "IX_Job_PersonId",
+                "Job",
+                "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Interactions_PersonId",
-                table: "Interactions",
-                column: "PersonId");
+                "IX_Interactions_PersonId",
+                "Interactions",
+                "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employer_PersonId",
-                table: "Employer",
-                column: "PersonId");
+                "IX_Employer_PersonId",
+                "Employer",
+                "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contact_PersonId",
-                table: "Contact",
-                column: "PersonId");
+                "IX_Contact_PersonId",
+                "Contact",
+                "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agency_PersonId",
-                table: "Agency",
-                column: "PersonId");
+                "IX_Agency_PersonId",
+                "Agency",
+                "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Document_PersonId",
-                table: "Document",
-                column: "PersonId");
+                "IX_Document_PersonId",
+                "Document",
+                "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Document_PersonId1",
-                table: "Document",
-                column: "PersonId1");
+                "IX_Document_PersonId1",
+                "Document",
+                "PersonId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Persons_UserId1",
-                table: "Persons",
-                column: "UserId1");
+                "IX_Persons_UserId1",
+                "Persons",
+                "UserId1");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_Persons_PersonId",
-                table: "Agency",
-                column: "PersonId",
-                principalTable: "Persons",
+                "FK_Agency_Persons_PersonId",
+                "Agency",
+                "PersonId",
+                "Persons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Contact_Persons_PersonId",
-                table: "Contact",
-                column: "PersonId",
-                principalTable: "Persons",
+                "FK_Contact_Persons_PersonId",
+                "Contact",
+                "PersonId",
+                "Persons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Employer_Persons_PersonId",
-                table: "Employer",
-                column: "PersonId",
-                principalTable: "Persons",
+                "FK_Employer_Persons_PersonId",
+                "Employer",
+                "PersonId",
+                "Persons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Interactions_Persons_PersonId",
-                table: "Interactions",
-                column: "PersonId",
-                principalTable: "Persons",
+                "FK_Interactions_Persons_PersonId",
+                "Interactions",
+                "PersonId",
+                "Persons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Job_Persons_PersonId",
-                table: "Job",
-                column: "PersonId",
-                principalTable: "Persons",
+                "FK_Job_Persons_PersonId",
+                "Job",
+                "PersonId",
+                "Persons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -175,70 +177,70 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_Persons_PersonId",
-                table: "Agency");
+                "FK_Agency_Persons_PersonId",
+                "Agency");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Contact_Persons_PersonId",
-                table: "Contact");
+                "FK_Contact_Persons_PersonId",
+                "Contact");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Employer_Persons_PersonId",
-                table: "Employer");
+                "FK_Employer_Persons_PersonId",
+                "Employer");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Interactions_Persons_PersonId",
-                table: "Interactions");
+                "FK_Interactions_Persons_PersonId",
+                "Interactions");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Job_Persons_PersonId",
-                table: "Job");
+                "FK_Job_Persons_PersonId",
+                "Job");
 
             migrationBuilder.DropTable(
-                name: "Document");
+                "Document");
 
             migrationBuilder.DropTable(
-                name: "Persons");
+                "Persons");
 
             migrationBuilder.DropIndex(
-                name: "IX_Job_PersonId",
-                table: "Job");
+                "IX_Job_PersonId",
+                "Job");
 
             migrationBuilder.DropIndex(
-                name: "IX_Interactions_PersonId",
-                table: "Interactions");
+                "IX_Interactions_PersonId",
+                "Interactions");
 
             migrationBuilder.DropIndex(
-                name: "IX_Employer_PersonId",
-                table: "Employer");
+                "IX_Employer_PersonId",
+                "Employer");
 
             migrationBuilder.DropIndex(
-                name: "IX_Contact_PersonId",
-                table: "Contact");
+                "IX_Contact_PersonId",
+                "Contact");
 
             migrationBuilder.DropIndex(
-                name: "IX_Agency_PersonId",
-                table: "Agency");
+                "IX_Agency_PersonId",
+                "Agency");
 
             migrationBuilder.DropColumn(
-                name: "PersonId",
-                table: "Job");
+                "PersonId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "PersonId",
-                table: "Interactions");
+                "PersonId",
+                "Interactions");
 
             migrationBuilder.DropColumn(
-                name: "PersonId",
-                table: "Employer");
+                "PersonId",
+                "Employer");
 
             migrationBuilder.DropColumn(
-                name: "PersonId",
-                table: "Contact");
+                "PersonId",
+                "Contact");
 
             migrationBuilder.DropColumn(
-                name: "PersonId",
-                table: "Agency");
+                "PersonId",
+                "Agency");
         }
     }
 }

@@ -12,9 +12,9 @@
 
 <div>
     <h4>Contact</h4>
-    <hr />
+    <hr/>
     <dl class="row">
-        
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Contact.Email)
         </dt>
@@ -25,13 +25,13 @@
             @Html.DisplayNameFor(model => model.Contact.PhoneNumber)
         </dt>
         <dd class="col-sm-10">
-            
-            @{
-                string area = Model.Contact.PhoneNumber.Substring(0, 3);
-                string prefix = Model.Contact.PhoneNumber.Substring(3, 3);
-                string main = Model.Contact.PhoneNumber.Substring(6, 4);
 
-                string final = "(" + area + ") " + prefix + "-" + main;
+            @{
+                var area = Model.Contact.PhoneNumber.Substring(0, 3);
+                var prefix = Model.Contact.PhoneNumber.Substring(3, 3);
+                var main = Model.Contact.PhoneNumber.Substring(6, 4);
+
+                var final = "(" + area + ") " + prefix + "-" + main;
             }
             @final
         </dd>

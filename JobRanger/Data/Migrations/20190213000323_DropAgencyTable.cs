@@ -8,69 +8,65 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Job_Agency_AgencyId",
-                table: "Job");
+                "FK_Job_Agency_AgencyId",
+                "Job");
 
             migrationBuilder.DropTable(
-                name: "Agency");
+                "Agency");
 
             migrationBuilder.DropTable(
-                name: "Icons");
+                "Icons");
 
             migrationBuilder.DropIndex(
-                name: "IX_Job_AgencyId",
-                table: "Job");
+                "IX_Job_AgencyId",
+                "Job");
 
             migrationBuilder.DropColumn(
-                name: "AgencyId",
-                table: "Job");
+                "AgencyId",
+                "Job");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "AgencyId",
-                table: "Job",
+                "AgencyId",
+                "Job",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Agency",
-                columns: table => new
+                "Agency",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     IconSrc = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: false),
                     WebSite = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Agency", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Agency", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Icons",
-                columns: table => new
+                "Icons",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Source = table.Column<string>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Icons", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Icons", x => x.Id); });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_AgencyId",
-                table: "Job",
-                column: "AgencyId");
+                "IX_Job_AgencyId",
+                "Job",
+                "AgencyId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Job_Agency_AgencyId",
-                table: "Job",
-                column: "AgencyId",
-                principalTable: "Agency",
+                "FK_Job_Agency_AgencyId",
+                "Job",
+                "AgencyId",
+                "Agency",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

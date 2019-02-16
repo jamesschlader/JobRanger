@@ -1,5 +1,4 @@
 ﻿@page 
-@using JobRanger.Models
 @model JobRanger.Pages.Employer.IndexModel
 
 @{
@@ -7,7 +6,9 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1 class="display-2"><strong>Employers</strong></h1>
+<h3 class="display-3">
+    <strong>Employers</strong>
+</h3>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -15,9 +16,11 @@
 
 @foreach (var item in Model.AppUser.Employers)
 {
-    <div class="card m-3 p-2" style="width: auto; display: inline-block">
+    <div class="card m-1 p-1" style="display: inline-block; width: auto;">
         <div class="card-body">
-            <h1 class="card-title"><a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a></h1>
+            <h1 class="card-title">
+                <a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a>
+            </h1>
             <div class="d-inline-block">
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
@@ -30,28 +33,27 @@
                     <th>Job Number</th>
                     <th>Description</th>
                 </tr>
-               
-                    @foreach (var job in item.Jobs)
-                       {
-                         
-                               <tr>
-                                   <td>
-                                       <a asp-page="../Job/Details" asp-route-id="@job.Id"><h4>@Html.DisplayFor(modelItem => job.Name)</h4></a>
 
-                                   </td>
-                                   <td>
-                                       @Html.DisplayFor(modelItem => job.Number)
-                                   </td>
-                                   <td>
-                                       <p style="width: auto; height: 100px;overflow: auto"> @Html.DisplayFor(model => job.Description)</p>
-                                      
-                                   </td>
-                               </tr>
-                           
-                        
-                    }
-                
-                
+                @foreach (var job in item.Jobs)
+                {
+                    <tr>
+                        <td>
+                            <a asp-page="../Job/Details" asp-route-id="@job.Id">
+                                <h4>@Html.DisplayFor(modelItem => job.Name)</h4>
+                            </a>
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => job.Number)
+                        </td>
+                        <td>
+                            <p style="height: 50px; overflow: auto; width: auto;"> @Html.DisplayFor(model => job.Description)</p>
+
+                        </td>
+                    </tr>
+                }
+
+
             </table>
             <br/>
             <table class="table">
@@ -65,25 +67,25 @@
                     <tr>
                         <td>
                             <a asp-page="../Contacts/Details" asp-route-id="@dude.Id"> @Html.DisplayFor(modelItem => dude.Name)</a>
-                           
+
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem=>dude.Email)
+                            @Html.DisplayFor(modelItem => dude.Email)
                         </td>
-                    <td>
-                        @{
-                            string area = item.PhoneNumber.Substring(0, 3);
-                            string prefix = item.PhoneNumber.Substring(3, 3);
-                            string main = item.PhoneNumber.Substring(6, 4);
+                        <td>
+                            @{
+                                var area = item.PhoneNumber.Substring(0, 3);
+                                var prefix = item.PhoneNumber.Substring(3, 3);
+                                var main = item.PhoneNumber.Substring(6, 4);
 
-                            string final = "(" + area + ") " + prefix + "-" + main;
-                        }
-                        @final
-                    </td>
+                                var final = "(" + area + ") " + prefix + "-" + main;
+                            }
+                            @final
+                        </td>
                     </tr>
                 }
             </table>
-            
+
         </div>
     </div>
 }

@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using JobRanger.Data;
 using JobRanger.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -42,9 +36,9 @@ namespace JobRanger
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-                //.AddRoles<ApplicationUser>();
-                //.AddDefaultUI(UIFramework.Bootstrap4);
-                
+            //.AddRoles<ApplicationUser>();
+            //.AddDefaultUI(UIFramework.Bootstrap4);
+
 
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
@@ -58,12 +52,11 @@ namespace JobRanger
                     options.Conventions.AllowAnonymousToPage("/Index");
                     options.Conventions.AllowAnonymousToPage("/About");
                     options.Conventions.AllowAnonymousToPage("/Privacy");
-                    
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-      // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
@@ -81,11 +74,10 @@ namespace JobRanger
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            
+
             app.UseAuthentication();
 
             app.UseMvc();
-
-          }
+        }
     }
 }

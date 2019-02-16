@@ -7,24 +7,24 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_Icons_IconSrcId",
-                table: "Agency");
+                "FK_Agency_Icons_IconSrcId",
+                "Agency");
 
             migrationBuilder.RenameColumn(
-                name: "IconSrcId",
-                table: "Agency",
-                newName: "IconsId");
+                "IconSrcId",
+                "Agency",
+                "IconsId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Agency_IconSrcId",
+                "IX_Agency_IconSrcId",
                 table: "Agency",
                 newName: "IX_Agency_IconsId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_Icons_IconsId",
-                table: "Agency",
-                column: "IconsId",
-                principalTable: "Icons",
+                "FK_Agency_Icons_IconsId",
+                "Agency",
+                "IconsId",
+                "Icons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -32,24 +32,24 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Agency_Icons_IconsId",
-                table: "Agency");
+                "FK_Agency_Icons_IconsId",
+                "Agency");
 
             migrationBuilder.RenameColumn(
-                name: "IconsId",
-                table: "Agency",
-                newName: "IconSrcId");
+                "IconsId",
+                "Agency",
+                "IconSrcId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Agency_IconsId",
+                "IX_Agency_IconsId",
                 table: "Agency",
                 newName: "IX_Agency_IconSrcId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Agency_Icons_IconSrcId",
-                table: "Agency",
-                column: "IconSrcId",
-                principalTable: "Icons",
+                "FK_Agency_Icons_IconSrcId",
+                "Agency",
+                "IconSrcId",
+                "Icons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

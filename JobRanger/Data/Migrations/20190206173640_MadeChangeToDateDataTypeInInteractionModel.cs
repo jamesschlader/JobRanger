@@ -8,8 +8,8 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
-                name: "TargetTime",
-                table: "Interactions",
+                "TargetTime",
+                "Interactions",
                 nullable: false,
                 oldClrType: typeof(DateTime),
                 oldType: "Date");
@@ -18,9 +18,9 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
-                name: "TargetTime",
-                table: "Interactions",
-                type: "Date",
+                "TargetTime",
+                "Interactions",
+                "Date",
                 nullable: false,
                 oldClrType: typeof(DateTime));
         }

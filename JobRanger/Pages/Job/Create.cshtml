@@ -8,20 +8,20 @@
 
 <h1>New Job</h1>
 
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
-        
+
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Job.Name" class="control-label"></label>
-                <input asp-for="Job.Name" class="form-control" />
+                <input asp-for="Job.Name" class="form-control"/>
                 <span asp-validation-for="Job.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Job.Number" class="control-label">Job Number</label>
-                <input asp-for="Job.Number" class="form-control" />
+                <input asp-for="Job.Number" class="form-control"/>
                 <span asp-validation-for="Job.Number" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,13 +31,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Job.Employer" class="control-label">Employer</label>
-                <select asp-for="Job.EmployerId" class="form-control" asp-items=@Model.EmployerNameSelectList>
+                <select asp-for="Job.EmployerId" class="form-control" asp-items="@Model.EmployerNameSelectList">
                     <option value="">-- Select Employer --</option>
                 </select>
                 <span asp-validation-for="Job.EmployerId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -48,5 +48,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

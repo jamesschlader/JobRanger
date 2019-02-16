@@ -7,17 +7,23 @@
 }
 
 <h1>@Html.DisplayFor(model => model.Interaction.Job.Name)</h1>
-<h4>at @Html.DisplayFor(model=>model.Interaction.Job.Employer.Name)</h4>
+<h4>at @Html.DisplayFor(model => model.Interaction.Job.Employer.Name)</h4>
 <br/>
 <div>
     <h4>@Html.DisplayFor(model => model.Interaction.InteractionTypeName)</h4>
-    <hr />
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Interaction.TargetTime)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Interaction.TargetTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Interaction.ToDo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Interaction.ToDo)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Interaction.InteractionTypeName)
@@ -29,8 +35,8 @@
             @Html.DisplayNameFor(model => model.Interaction.Notes)
         </dt>
         <dd class="col-sm-10">
-            <p style="width: auto; height: 100px;overflow: auto"> @Html.DisplayFor(model => model.Interaction.Notes)</p>
-           
+            <p style="height: 100px; overflow: auto; width: auto;"> @Html.DisplayFor(model => model.Interaction.Notes)</p>
+
         </dd>
 
     </dl>

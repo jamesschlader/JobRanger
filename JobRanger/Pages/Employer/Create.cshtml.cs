@@ -1,38 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using JobRanger.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using JobRanger.Data;
-using JobRanger.Models;
 
 namespace JobRanger.Pages.Employer
 {
     public class CreateModel : PageModel
     {
-        private readonly JobRanger.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(JobRanger.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }
+
+        [BindProperty] public Models.Employer Employer { get; set; }
 
         public IActionResult OnGet()
         {
             return Page();
         }
 
-        [BindProperty]
-        public Models.Employer Employer { get; set; }
-
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
             _context.Employer.Add(Employer);
             await _context.SaveChangesAsync();

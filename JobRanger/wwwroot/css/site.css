@@ -1,98 +1,92 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+* {
+    font-family: 'Orienta', sans-serif;
 }
 
-a {
-  color: rgb(161,72,41)
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
 html {
-  font-size: 14px;
- 
+    font-size: 20px;
+    min-height: 100%;
+    position: relative;
+    
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.jumbotron {
-  background:none
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(172, 105, 177, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  color: #e5e5e5;
-  
+    color: #e5e5e5;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
+   
+a.navbar-brand {
+    text-align: center;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.nav-item:hover {
+    font-size: 120%;
+   font-weight: bold
+}
+
+a { color: rgb(161, 72, 41) }
+
+.jumbotron {
+    background: none
+}
+
+
+#display-user {
+    font-size: 1.3rem
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(172, 105, 177, .05); }
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
 
 .agency-card {
-  background-color: rgb(229,229,229);
-  color: rgb(172, 105, 177);
-  width: 18rem;
-  display:inline-block
+    background-color: rgb(229, 229, 229);
+    color: rgb(172, 105, 177);
+    display: inline-block;
+    width: 18rem;
 }
 
-.agency-card a {
-  color: rgb(161,72,41)
-}
+.agency-card a { color: rgb(161, 72, 41) }
 
 .card {
-  background: rgba(229,229,229,.50);
-  color: rgb(84, 26, 5)
+    background: rgba(229, 229, 229, .30);
+    color: rgb(84, 26, 5)
 }
 
-  .card a {
-    color: rgb(161,72,41)
-  }
+.card a { color: rgb(161, 72, 41) }
 
-.table {
-  background-color: rgba(172, 105, 177, .75);
-  
+.table { 
+    background: rgba(172, 105, 177, .45);
+    border-spacing: 5px;
 }
 
-.table a {
-  color:rgb(240,209,107)
-}
+.table a { color: rgb(240, 209, 107) }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    bottom: 0;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
 }

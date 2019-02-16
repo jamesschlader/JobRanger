@@ -7,21 +7,21 @@ namespace JobRanger.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Interactions_Job_JobId",
-                table: "Interactions");
+                "FK_Interactions_Job_JobId",
+                "Interactions");
 
             migrationBuilder.AlterColumn<int>(
-                name: "JobId",
-                table: "Interactions",
+                "JobId",
+                "Interactions",
                 nullable: false,
                 oldClrType: typeof(int),
                 oldNullable: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Interactions_Job_JobId",
-                table: "Interactions",
-                column: "JobId",
-                principalTable: "Job",
+                "FK_Interactions_Job_JobId",
+                "Interactions",
+                "JobId",
+                "Job",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -29,20 +29,20 @@ namespace JobRanger.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Interactions_Job_JobId",
-                table: "Interactions");
+                "FK_Interactions_Job_JobId",
+                "Interactions");
 
             migrationBuilder.AlterColumn<int>(
-                name: "JobId",
-                table: "Interactions",
+                "JobId",
+                "Interactions",
                 nullable: true,
                 oldClrType: typeof(int));
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Interactions_Job_JobId",
-                table: "Interactions",
-                column: "JobId",
-                principalTable: "Job",
+                "FK_Interactions_Job_JobId",
+                "Interactions",
+                "JobId",
+                "Job",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
