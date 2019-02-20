@@ -31,7 +31,13 @@ namespace JobRanger.Models
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        public int JobId { get; set; }
-        public virtual Job Job { get; set; }
+        
+        public int? ContactId { get; set; }
+        public Contact Contact { get; set; }
+
+        public int? JobId { get; set; }
+       public Job Job { get; set; }
+
+      
     }
 }

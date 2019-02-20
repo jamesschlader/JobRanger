@@ -21,6 +21,10 @@
     <Compile Remove="Data\Migrations\20190208050755_AnotherAttemptToDropInteractionTypeTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20190208195352_AddedUserModel.cs" />
     <Compile Remove="Data\Migrations\20190208195352_AddedUserModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190220170840_AddedAssociationBetweenContactsAndInteractions.cs" />
+    <Compile Remove="Data\Migrations\20190220170840_AddedAssociationBetweenContactsAndInteractions.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190220174333_AddedContactIdToInteractionModel.cs" />
+    <Compile Remove="Data\Migrations\20190220174333_AddedContactIdToInteractionModel.Designer.cs" />
   </ItemGroup>
 
 

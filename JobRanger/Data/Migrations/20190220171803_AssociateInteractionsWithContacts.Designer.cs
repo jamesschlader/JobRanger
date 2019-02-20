@@ -4,14 +4,16 @@ using JobRanger.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JobRanger.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190220171803_AssociateInteractionsWithContacts")]
+    partial class AssociateInteractionsWithContacts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<int?>("EmployerId");
+                    b.Property<int>("EmployerId");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -182,7 +184,7 @@ namespace JobRanger.Data.Migrations
 
                     b.Property<string>("InteractionTypeName");
 
-                    b.Property<int?>("JobId");
+                    b.Property<int>("JobId");
 
                     b.Property<string>("Notes");
 
@@ -353,7 +355,8 @@ namespace JobRanger.Data.Migrations
 
                     b.HasOne("JobRanger.Models.Employer", "Employer")
                         .WithMany("Contacts")
-                        .HasForeignKey("EmployerId");
+                        .HasForeignKey("EmployerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("JobRanger.Models.Employer", b =>
@@ -369,13 +372,14 @@ namespace JobRanger.Data.Migrations
                         .WithMany("Interactions")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("JobRanger.Models.Contact", "Contact")
+                    b.HasOne("JobRanger.Models.Contact")
                         .WithMany("Interactions")
                         .HasForeignKey("ContactId");
 
                     b.HasOne("JobRanger.Models.Job", "Job")
                         .WithMany("Interactions")
-                        .HasForeignKey("JobId");
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("JobRanger.Models.Job", b =>

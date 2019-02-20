@@ -33,6 +33,7 @@ namespace JobRanger.Pages.Interactions
                 AppUser = await _context.ApplicationUser
                     .Include(i => i.Interactions)
                     .Include(j => j.Jobs)
+                    .Include(c => c.Contacts)
                     .Include(e => e.Employers)
                     .FirstOrDefaultAsync(f => f.Id == userId);
 

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using JobRanger.Data;
@@ -30,7 +31,8 @@ namespace JobRanger.Pages.Contacts
 
             if (Contact == null) return NotFound();
             ViewData["EmployerId"] = new SelectList(_context.Employer, "Id", "Name");
-            return Page();
+
+          return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()

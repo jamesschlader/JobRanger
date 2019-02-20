@@ -53,17 +53,19 @@ button.accept-policy {
 
 
 .agency-card {
-    background-color: rgb(229, 229, 229);
+    background: rgba(255, 255, 255, 1.0);
     color: rgb(172, 105, 177);
     display: inline-block;
     width: 18rem;
+    border-radius: 25%
 }
 
 .agency-card a { color: rgb(161, 72, 41) }
 
 .card {
     background: rgba(229, 229, 229, .30);
-    color: rgb(84, 26, 5)
+    color: rgb(84, 26, 5);
+    border-radius: 10px
 }
 
 .card a { color: rgb(161, 72, 41) }
@@ -71,6 +73,7 @@ button.accept-policy {
 .table { 
     background: rgba(172, 105, 177, .45);
     border-spacing: 5px;
+    border-radius:10px
 }
 
 .table a { color: rgb(240, 209, 107) }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace JobRanger.Models
 {
@@ -19,7 +20,7 @@ namespace JobRanger.Models
         [DataType(DataType.PhoneNumber)]
         [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage =
             "Please enter valid phone no.")]
-        //[DisplayFormat(DataFormatString = "{0:{$$$-$$$-$$$$}", ApplyFormatInEditMode = true)]
+       // [DisplayFormat(DataFormatString = "{0:{(###) ###-####}",  ApplyFormatInEditMode = true)]
         public string PhoneNumber { get; set; }
 
         [StringLength(75)] public string Address1 { get; set; }
@@ -40,10 +41,12 @@ namespace JobRanger.Models
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        [DisplayName("Employer")] public int EmployerId { get; set; }
+        [DisplayName("Employer")] public int? EmployerId { get; set; }
 
         public Employer Employer { get; set; }
 
-        public virtual List<Job> Jobs { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
+
+        public virtual ICollection<Interaction> Interactions { get; set; }
     }
 }

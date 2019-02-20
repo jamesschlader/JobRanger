@@ -6,12 +6,22 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>@Html.DisplayFor(model => model.Interaction.Job.Name)</h1>
-<h4>at @Html.DisplayFor(model => model.Interaction.Job.Employer.Name)</h4>
-<br/>
+@if (Model.Interaction.Job != null)
+{
+    <h1>@Html.DisplayFor(model => model.Interaction.Job.Name)</h1>
+    <h4>at @Html.DisplayFor(model => model.Interaction.Job.Employer.Name)</h4>
+}
+else
+{
+    <h1>@Html.DisplayFor(model => model.Interaction.Contact.Name)</h1>
+                                                                
+}
+
+
+<br />
 <div>
     <h4>@Html.DisplayFor(model => model.Interaction.InteractionTypeName)</h4>
-    <hr/>
+    <hr />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Interaction.TargetTime)

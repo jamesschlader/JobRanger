@@ -20,6 +20,7 @@ namespace JobRanger.Pages.Interactions
         }
 
         public Models.Job Job { get; set; }
+        
 
         [BindProperty] public Interaction Interaction { get; set; }
 
@@ -30,6 +31,7 @@ namespace JobRanger.Pages.Interactions
                 .Include(i => i.Interactions)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
+           
          return Page();
         }
 

@@ -26,14 +26,7 @@
         </dt>
         <dd class="col-sm-10">
 
-            @{
-                var area = Model.Contact.PhoneNumber.Substring(0, 3);
-                var prefix = Model.Contact.PhoneNumber.Substring(3, 3);
-                var main = Model.Contact.PhoneNumber.Substring(6, 4);
-
-                var final = "(" + area + ") " + prefix + "-" + main;
-            }
-            @final
+          @Html.DisplayFor(model=>model.Contact.PhoneNumber)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Contact.Address1)

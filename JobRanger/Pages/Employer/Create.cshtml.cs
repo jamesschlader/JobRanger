@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using JobRanger.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace JobRanger.Pages.Employer
 {
@@ -25,10 +27,36 @@ namespace JobRanger.Pages.Employer
         {
             if (!ModelState.IsValid) return Page();
 
-            _context.Employer.Add(Employer);
-            await _context.SaveChangesAsync();
+            var emptyEmployer = new Models.Employer();
 
-            return RedirectToPage("./Index");
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            emptyEmployer.ApplicationUserId = userId;
+
+            if (await TryUpdateModelAsync(
+                emptyEmployer,
+                "employer",
+                e=>e.ApplicationUserId,
+                e=>e.Name,
+                e=>e.Address1,
+                e=>e.Address2,
+                e=>e.City,
+                e=>e.PhoneNumber,
+                e=>e.State,
+                e=>e.WebSite,
+                e=>e.ZipCode
+            ))
+            {
+                _context.Employer.Add(emptyEmployer);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+
+
+
+            return Page();
         }
+        
     }
 }
