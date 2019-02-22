@@ -21,12 +21,8 @@
                     <img src="@item.IconSrc" height="120" width="120"/>
                 </a>
             </h5>
-            <div>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </div>
-
+           
+            <a  href=@Html.DisplayFor(modelItem => item.WebSite) target="blank" >@Html.DisplayFor(modelItem=>item.Name)</a>
 
         </div>
     </div>

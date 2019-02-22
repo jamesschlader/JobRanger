@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using JobRanger.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobRanger.Pages.Agency
 {
+    [Authorize(Roles = "Administrator")]
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;

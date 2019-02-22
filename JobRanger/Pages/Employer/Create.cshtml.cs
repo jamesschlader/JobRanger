@@ -44,7 +44,8 @@ namespace JobRanger.Pages.Employer
                 e=>e.PhoneNumber,
                 e=>e.State,
                 e=>e.WebSite,
-                e=>e.ZipCode
+                e=>e.ZipCode,
+                e=>e.Description
             ))
             {
                 _context.Employer.Add(emptyEmployer);

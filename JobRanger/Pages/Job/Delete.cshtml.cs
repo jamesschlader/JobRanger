@@ -32,6 +32,9 @@ namespace JobRanger.Pages.Job
             if (id == null) return NotFound();
 
             Job = await _context.Job.FindAsync(id);
+            await _context.Entry(Job).Collection(s => s.Interactions).LoadAsync();
+            
+
 
             if (Job != null)
             {

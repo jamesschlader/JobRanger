@@ -8,7 +8,7 @@
 }
 
 <h1 class="display-3">
-    <strong>Actions</strong>
+    <strong>To Do's</strong>
 </h1>
 <div style="float: right">
     <a class="nav-link " asp-area="" asp-page="/Interactions/Log">History</a>
@@ -19,9 +19,13 @@
     <table class="table table-responsive-sm m-1 p-1">
         <form method="post">
       
-                 <div class="form-group">
-                     <input type="submit" value="Save" class="btn btn-primary"/>
-                 </div>
+            @if (Model.AppUser.Interactions.FirstOrDefault(item => item.ToDo && !item.Finished) != null)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary"/>
+                </div>
+            }
+            
             
             
             <thead>

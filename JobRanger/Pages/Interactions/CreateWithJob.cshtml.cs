@@ -48,7 +48,7 @@ namespace JobRanger.Pages.Interactions
             if (await TryUpdateModelAsync(
                 emptyInteraction,
                 "interaction",
-                j => j.JobId, j => j.Notes, j => j.TargetTime, j => j.InteractionTypeName, j=>j.ToDo
+                j => j.JobId, j => j.Notes, j=>j.ApplicationUserId, j => j.TargetTime, j => j.InteractionTypeName, j=>j.ToDo
             ))
             {
                 _context.Interactions.Add(emptyInteraction);

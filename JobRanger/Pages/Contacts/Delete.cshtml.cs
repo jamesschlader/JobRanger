@@ -34,6 +34,7 @@ namespace JobRanger.Pages.Contacts
             if (id == null) return NotFound();
 
             Contact = await _context.Contact.FindAsync(id);
+            
 
             if (Contact != null)
             {

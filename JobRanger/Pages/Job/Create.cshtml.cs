@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using JobRanger.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -28,13 +29,17 @@ namespace JobRanger.Pages.Job
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid) return Page();
-
+            
             var emptyJob = new Models.Job();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            emptyJob.ApplicationUserId = userId;
 
             if (await TryUpdateModelAsync(
                 emptyJob,
                 "job",
-                j => j.Name, j => j.Number, j => j.EmployerId, j => j.Description
+                j => j.Name,  j => j.Number, j => j.EmployerId, j => j.Description
             ))
             {
                 _context.Job.Add(emptyJob);

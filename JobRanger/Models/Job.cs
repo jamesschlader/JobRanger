@@ -15,7 +15,7 @@ namespace JobRanger.Models
 
         public string Description { get; set; }
 
-        public int EmployerId { get; set; }
+        public int? EmployerId { get; set; }
         public Employer Employer { get; set; }
 
         [ForeignKey("ApplicationUserId")] public string ApplicationUserId { get; set; }

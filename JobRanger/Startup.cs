@@ -36,7 +36,7 @@ namespace JobRanger
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            //.AddRoles<ApplicationUser>();
+           // .AddRoles<ApplicationUser>();
             //.AddDefaultUI(UIFramework.Bootstrap4);
 
 
@@ -49,6 +49,10 @@ namespace JobRanger
                     options.Conventions.AuthorizeFolder("/Job");
 
                     options.Conventions.AllowAnonymousToPage("/Agency");
+                    options.Conventions.AuthorizePage("/Agency/Delete");
+                  
+                    options.Conventions.AuthorizePage("/Agency/Create");
+                    options.Conventions.AuthorizePage("/Agency/Edit");
                     options.Conventions.AllowAnonymousToPage("/Index");
                     options.Conventions.AllowAnonymousToPage("/About");
                     options.Conventions.AllowAnonymousToPage("/Privacy");

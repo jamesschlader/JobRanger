@@ -13,6 +13,8 @@ namespace JobRanger.Models
 
         public string WebSite { get; set; }
 
+        public string Description { get; set; }
+
         [DisplayName("Phone Number")]
         // [Phone]
         [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage =

@@ -39,7 +39,7 @@
 
         </thead>
         <tbody>
-        @foreach (var item in Model.AppUser.Jobs)
+        @foreach (var item in Model.AppUser.Jobs.OrderByDescending(j=> j.Id))
         {
             <tr>
                 <td>
@@ -59,7 +59,7 @@
 
                 </td>
 
-                @if (item.Interactions.Count > 0)
+                @if (item.Interactions != null)
                 {
                     <td>
                         @foreach (var interaction in item.Interactions)

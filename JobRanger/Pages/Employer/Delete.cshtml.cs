@@ -32,6 +32,8 @@ namespace JobRanger.Pages.Employer
             if (id == null) return NotFound();
 
             Employer = await _context.Employer.FindAsync(id);
+            await _context.Entry(Employer).Collection(s => s.Jobs).LoadAsync();
+            await _context.Entry(Employer).Collection(s => s.Contacts).LoadAsync();
 
             if (Employer != null)
             {

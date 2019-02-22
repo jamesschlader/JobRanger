@@ -15,85 +15,116 @@
     <a asp-page="Create">Create New</a>
 </p>
 
-@foreach (var item in Model.AppUser.Employers)
-{
-   
-    <div class="card m-1 p-1" style="display: inline-block; width: auto;">
-        <div class="card-body">
-            <h1 class="card-title">
-                <a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a>
-            </h1>
-            <div class="d-inline-block">
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </div>
-        
-            <table class="table">
-                <tr>
-                    <th>Job Name</th>
-                    <th>Job Number</th>
-                    <th>Description</th>
-                </tr>
-                @if (item.Jobs != null)
-                {
-              
-                    foreach (var job in item.Jobs)
-                     {
-                         <tr>
-                             <td>
-                                 <a asp-page="../Job/Details" asp-route-id="@job.Id">
-                                     <h4>@Html.DisplayFor(modelItem => job.Name)</h4>
-                                 </a>
+<div class="container-fluid">
 
-                             </td>
-                             <td>
-                                 @Html.DisplayFor(modelItem => job.Number)
-                             </td>
-                             <td>
-                                 <p style="height: 50px; overflow: auto; width: auto;"> @Html.DisplayFor(model => job.Description)</p>
-
-                             </td>
-                         </tr>
-                     }
-                }
+    @foreach (var item in Model.AppUser.Employers.OrderBy(e=>e.Name))
+    {
+        if (item.Name.Trim().Contains(" "))
+        {
+            <a class="btn btn-light p-3 m-1 agency-card" style="box-shadow: 4px 4px rgb(172, 105, 177)"data-toggle="collapse" href="#@item.Name.Trim().Remove(item.Name.IndexOf(" " ))" role="button" aria-expanded="false" aria-controls="@item.Name.Trim().Remove(item.Name.IndexOf(" "))">@Html.DisplayFor(model => item.Name)</a>
+        }
+        else
+        {
+            <a class="btn btn-light p-3 m-1 agency-card" style="box-shadow: 4px 4px rgb(172, 105, 177)" data-toggle="collapse" href="#@item.Name" role="button" aria-expanded="false" aria-controls="@item.Name">@Html.DisplayFor(model=>item.Name)</a>
             
-            </table>
-            <br/>
-            <table class="table">
-                <tr>
-                    <th>Contact Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                </tr>
-                @if (item.Contacts != null)
-                {
-                    foreach (var dude in item.Contacts)
-                     {
-                         <tr>
-                             <td>
-                                 <a asp-page="../Contacts/Details" asp-route-id="@dude.Id"> @Html.DisplayFor(modelItem => dude.Name)</a>
+        }
+       }
 
-                             </td>
-                             <td>
-                                 @Html.DisplayFor(modelItem => dude.Email)
-                             </td>
-                             <td>
-                                 @{
-                                     var area = item.PhoneNumber.Substring(0, 3);
-                                     var prefix = item.PhoneNumber.Substring(3, 3);
-                                     var main = item.PhoneNumber.Substring(6, 4);
+    @foreach (var item in Model.AppUser.Employers)
+    {
 
-                                     var final = "(" + area + ") " + prefix + "-" + main;
-                                 }
-                                 @final
-                             </td>
-                         </tr>
-                     }
-                }
-               
-            </table>
+        <div class="collapse p-4 m-4" id=@(item.Name.Contains(" ") ? item.Name.Trim().Remove(item.Name.IndexOf(" ") ) : item.Name)>
+            <div class="card m-1 p-1" style="display: inline-block; width: auto;">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        <a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">@Html.DisplayFor(modelItem => item.Name)</a>
+                    </h1>
+                    <div class="d-inline-block">
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                    <div>
+                        @if (item.Description != null)
+                        {
+                            <p>
+                                @Html.DisplayFor(model => item.Description)
+                            </p>
+                        }
+                        else
+                        {
+                            <p>No description available. Edit to add one.</p>
+                        }
 
+                    </div>
+
+                    <table class="table">
+                        <tr>
+                            <th>Job Name</th>
+                            <th>Job Number</th>
+                            <th>Description</th>
+                        </tr>
+                        @if (item.Jobs != null)
+                        {
+
+                            foreach (var job in item.Jobs)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-page="../Job/Details" asp-route-id="@job.Id">
+                                            <h4>@Html.DisplayFor(modelItem => job.Name)</h4>
+                                        </a>
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => job.Number)
+                                    </td>
+                                    <td>
+                                        <p style="height: 50px; overflow: auto; width: auto;"> @Html.DisplayFor(model => job.Description)</p>
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+                    <br />
+                    <table class="table">
+                        <tr>
+                            <th>Contact Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                        @if (item.Contacts != null)
+                        {
+                            foreach (var dude in item.Contacts)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-page="../Contacts/Details" asp-route-id="@dude.Id"> @Html.DisplayFor(modelItem => dude.Name)</a>
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => dude.Email)
+                                    </td>
+                                    <td>
+                                        @{
+                                            var area = item.PhoneNumber.Substring(0, 3);
+                                            var prefix = item.PhoneNumber.Substring(3, 3);
+                                            var main = item.PhoneNumber.Substring(6, 4);
+
+                                            var final = "(" + area + ") " + prefix + "-" + main;
+                                        }
+                                        @final
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+
+                </div>
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
