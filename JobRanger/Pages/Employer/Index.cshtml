@@ -108,14 +108,7 @@
                                         @Html.DisplayFor(modelItem => dude.Email)
                                     </td>
                                     <td>
-                                        @{
-                                            var area = item.PhoneNumber.Substring(0, 3);
-                                            var prefix = item.PhoneNumber.Substring(3, 3);
-                                            var main = item.PhoneNumber.Substring(6, 4);
-
-                                            var final = "(" + area + ") " + prefix + "-" + main;
-                                        }
-                                        @final
+                                        @Html.DisplayFor(model=>item.PhoneNumber)
                                     </td>
                                 </tr>
                             }
