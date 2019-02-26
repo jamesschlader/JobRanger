@@ -57,7 +57,7 @@ button.accept-policy {
     color: rgb(172, 105, 177);
     display: inline-block;
     width: 18rem;
-    border-radius: 40%;
+    border-radius: 15px;
     box-shadow: 4px 2px;
     text-align: center
 }

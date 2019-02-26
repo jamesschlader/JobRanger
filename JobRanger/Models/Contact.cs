@@ -18,9 +18,6 @@ namespace JobRanger.Models
 
         [DisplayName("Phone Number")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage =
-            "Please enter valid phone no.")]
-        [DisplayFormat(DataFormatString = "{0:{(###) ###-####}",  ApplyFormatInEditMode = true)]
         public string PhoneNumber { get; set; }
 
         [StringLength(75)] public string Address1 { get; set; }

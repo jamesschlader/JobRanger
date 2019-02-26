@@ -4,14 +4,16 @@ using JobRanger.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JobRanger.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190226011118_FixTalentZooLogo")]
+    partial class FixTalentZooLogo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,7 +222,7 @@ namespace JobRanger.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<string>("Number");
+                    b.Property<int>("Number");
 
                     b.HasKey("Id");
 

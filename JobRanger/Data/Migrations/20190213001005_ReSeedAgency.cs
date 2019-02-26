@@ -37,7 +37,7 @@ namespace JobRanger.Data.Migrations
             migrationBuilder.Sql(
                 "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Indeed','https://www.indeed.com/','/lib/images/indeed-logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Interships.com','https://www.internships.com/','/lib/images/interships.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Interships.com','https://www.internships.com/','/lib/images/internships.svg')");
             migrationBuilder.Sql(
                 "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('JobApplicationsOnline.com','https://www.jobapplicationsonline.com/','/lib/images/jobsappsonline-logo (1).svg')");
             migrationBuilder.Sql(
@@ -55,21 +55,21 @@ namespace JobRanger.Data.Migrations
             migrationBuilder.Sql(
                 "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('SalesGravy','https://www.salesgravy.com/JobBoard/','/lib/images/salesgravy-logo (2).svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('SimplyHired','https://www.simplyhired.com/','/lib/image/simplyhired-logo.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('SimplyHired','https://www.simplyhired.com/','/lib/images/simplyhired-logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Snagajob','https://www.snagajob.com/','/lib/image/snag-logo.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Snagajob','https://www.snagajob.com/','/lib/images/snag-logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('StackOverflow Jobs','https://stackoverflow.com/jobs/get-started','/lib/image/stackoverflow-logo.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('StackOverflow Jobs','https://stackoverflow.com/jobs/get-started','/lib/images/stackoverflow-logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Talent Zoo','http://www.talentzoo.com/','/lib/image/talentzoo-logo.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('Talent Zoo','http://www.talentzoo.com/','/lib/images/talentzoo-logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('TechCareers','https://www.techcareers.com/','/lib/image/techcareer-logo.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('TechCareers','https://www.techcareers.com/','/lib/images/techcareer-logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('UpWork','https://www.upwork.com/','/lib/image/logo-upwork.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('UpWork','https://www.upwork.com/','/lib/images/logo-upwork.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('USAJOBS','https://www.usajobs.gov/','/lib/image/USAJOBS.gov_logo.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('USAJOBS','https://www.usajobs.gov/','/lib/images/USAJOBS.gov_logo.svg')");
             migrationBuilder.Sql(
-                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('ZipRecruiter','https://www.ziprecruiter.com','/lib/image/ziprecruiter-blacktext.svg')");
+                "INSERT INTO Agency (Name, WebSite, IconSrc) VALUES ('ZipRecruiter','https://www.ziprecruiter.com','/lib/images/ziprecruiter-blacktext.svg')");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

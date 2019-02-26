@@ -17,22 +17,17 @@
 
 <div class="container-fluid">
 
-    @foreach (var item in Model.AppUser.Employers.OrderBy(e=>e.Name))
+    @foreach (var item in Model.AppUser.Employers.OrderBy(e => e.Name))
     {
         if (item.Name.Trim().Contains(" "))
         {
-            <a class="btn btn-light p-3 m-1 agency-card" style="box-shadow: 4px 4px rgb(172, 105, 177)"data-toggle="collapse" href="#@item.Name.Trim().Remove(item.Name.IndexOf(" " ))" role="button" aria-expanded="false" aria-controls="@item.Name.Trim().Remove(item.Name.IndexOf(" "))">@Html.DisplayFor(model => item.Name)</a>
+            <a class="btn btn-light p-1 m-1 agency-card" style="box-shadow: 4px 4px rgb(172, 105, 177)" data-toggle="collapse" href="#@item.Name.Trim().Remove(item.Name.IndexOf(" " ))" role="button" aria-expanded="false" aria-controls="@item.Name.Trim().Remove(item.Name.IndexOf(" "))">@Html.DisplayFor(model => item.Name)</a>
         }
         else
         {
-            <a class="btn btn-light p-3 m-1 agency-card" style="box-shadow: 4px 4px rgb(172, 105, 177)" data-toggle="collapse" href="#@item.Name" role="button" aria-expanded="false" aria-controls="@item.Name">@Html.DisplayFor(model=>item.Name)</a>
-            
+            <a class="btn btn-light p-1 m-1 agency-card" style="box-shadow: 4px 4px rgb(172, 105, 177)" data-toggle="collapse" href="#@item.Name" role="button" aria-expanded="false" aria-controls="@item.Name">@Html.DisplayFor(model => item.Name)</a>
+
         }
-       }
-
-    @foreach (var item in Model.AppUser.Employers)
-    {
-
         <div class="collapse p-4 m-4" id=@(item.Name.Contains(" ") ? item.Name.Trim().Remove(item.Name.IndexOf(" ") ) : item.Name)>
             <div class="card m-1 p-1" style="display: inline-block; width: auto;">
                 <div class="card-body">
@@ -108,7 +103,7 @@
                                         @Html.DisplayFor(modelItem => dude.Email)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(model=>item.PhoneNumber)
+                                        @Html.DisplayFor(model => item.PhoneNumber)
                                     </td>
                                 </tr>
                             }

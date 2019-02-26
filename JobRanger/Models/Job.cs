@@ -11,7 +11,7 @@ namespace JobRanger.Models
 
         [Required] public string Name { get; set; }
 
-        [DisplayName("Job Number")] public int Number { get; set; }
+        [DisplayName("Job Number")] public string Number { get; set; }
 
         public string Description { get; set; }
 

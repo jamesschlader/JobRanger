@@ -13,10 +13,10 @@
 
 @foreach (var item in Model.Agency)
 {
-    <div class=" m-3 agency-card " >
+    <div class="m-1 p-1 agency-card" >
         <div class="card-body">
 
-            <h5 class="card-title ">
+            <h5 class="card-title">
                 <a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">
                     <img src="@item.IconSrc" height="120" width="120"/>
                 </a>
