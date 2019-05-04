@@ -9,6 +9,7 @@ namespace JobRanger.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<Agency> Agency { get; set; }

@@ -1,1 +1,1 @@
-﻿select * from Agency;
+﻿select * from Agency

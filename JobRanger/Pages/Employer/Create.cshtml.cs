@@ -53,9 +53,7 @@ namespace JobRanger.Pages.Employer
 
                 return RedirectToPage("./Index");
             }
-
-
-
+            
             return Page();
         }
         
