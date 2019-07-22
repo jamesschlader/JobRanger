@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace JobRanger
@@ -12,8 +13,11 @@ namespace JobRanger
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
+            var port = Environment.GetEnvironmentVariable("PORT");
+
             return WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseUrls("http://*:" + port);
         }
     }
 }

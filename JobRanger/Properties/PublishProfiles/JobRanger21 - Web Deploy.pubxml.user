@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEUWwibH2AEit/4y8Rp2K4QAAAAACAAAAAAAQZgAAAAEAACAAAAB8mEkRS/Q/enZpMoJxDko3Fga+98pkwiL+xha6Rh6qkgAAAAAOgAAAAAIAACAAAAAQSZzP6UvqiJAbpYI2cnayV9Rsh7t9RTEPOqbG0HO6EIAAAAB90pkLhtFbqNdLD16Eg0GjPMhfIdfwULY+atoi2HsX968Bfc54SKbDhiW+ncOpnA5XxBnZfsTiq+tuyfMXRvUS6QEIBhh48h73YaprkJye5nhMezlMXJd4O27+mf9VdgrfU7rSZ3OC5tkYAr2hM5DUcyQpvkhSzIzIOVoaWw8a/EAAAADhCBnZUfBN2Vbu8SvA26Hx5LJC56cTZKi9omd13IQ1RMUMcunlDDgtayCf0G7r1UtuWdWNyLFv+oc8xvZI5z56</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:jobranger21dbserver.database.windows.net,1433%3bInitial Catalog=JobRanger21_db%3bUser Id=jamesschlader%40live.com%40jobranger21dbserver%3bPassword=Alex#12Pass</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

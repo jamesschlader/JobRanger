@@ -1,0 +1,4 @@
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
+WORKDIR /jobrangerapp
+COPY . .
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet jobrangerapp.dll
