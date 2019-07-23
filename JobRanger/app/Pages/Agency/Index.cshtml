@@ -1,0 +1,29 @@
+﻿@page
+@model JobRanger.Pages.Agency.Index
+
+@{
+    ViewData["Title"] = "Agency";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 class="display-3">
+    <strong>Agencies</strong>
+</h1>
+
+
+@foreach (var item in Model.Agency)
+{
+    <div class="m-1 p-1 agency-card" >
+        <div class="card-body">
+
+            <h5 class="card-title">
+                <a href=@Html.DisplayFor(modelItem => item.WebSite) target="blank">
+                    <img src="@item.IconSrc" height="120" width="120"/>
+                </a>
+            </h5>
+           
+            <a  href=@Html.DisplayFor(modelItem => item.WebSite) target="blank" >@Html.DisplayFor(modelItem=>item.Name)</a>
+
+        </div>
+    </div>
+}

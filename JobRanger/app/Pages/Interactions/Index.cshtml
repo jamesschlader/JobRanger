@@ -1,0 +1,162 @@
+﻿@page
+@using JobRanger.Models
+@model JobRanger.Pages.Interactions.IndexModel
+
+@{
+    ViewData["Title"] = "Actions - Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 class="display-3">
+    <strong>To Do's</strong>
+</h1>
+<div style="float: right">
+    <a class="nav-link " asp-area="" asp-page="/Interactions/Log">History</a>
+</div>
+
+<a href="javascript: history.go(-1)">Go Back to Previous Page</a>
+<div class="table-responsive-sm ">
+    <table class="table table-responsive-sm m-1 p-1">
+        <form method="post">
+      
+            @if (Model.AppUser.Interactions.FirstOrDefault(item => item.ToDo && !item.Finished) != null)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary"/>
+                </div>
+            }
+            
+            
+            
+            <thead>
+            <tr>
+                <th>
+                    Done
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Interaction.InteractionTypeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Interaction.TargetTime)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Interaction.Job)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Interaction.Job.Employer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Interaction.Contact)
+                </th>
+                <th>Notes</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var item in Model.AppUser.Interactions)
+            {
+                if (item.ToDo && !item.Finished)
+                {
+                    <tr>
+                        
+                            @if (item.Job != null)
+                            {
+                             <td>
+                                <div class="form-check">
+                                <input type="hidden" asp-for="Interaction.Id" value="@item.Id"/>
+                                <input type="hidden" asp-for="Interaction.JobId" value="@item.JobId"/>
+                                <input type="hidden" asp-for="Interaction.ApplicationUserId" value="@item.ApplicationUserId"/>
+                                <input type="hidden" asp-for="Interaction.InteractionTypeName" value="@item.InteractionTypeName"/>
+                                <input type="hidden" asp-for="Interaction.Notes" value="@item.Notes"/>
+                                <input type="hidden" asp-for="Interaction.TargetTime" value="@item.TargetTime"/>
+                                <input type="hidden" asp-for="Interaction.ToDo" value="@item.ToDo"/>
+                                <input class="form-check-input" asp-for="Interaction.Finished" type="checkbox" value="true"/>
+                                </div>
+                            </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <div class="form-check">
+                                <input type="hidden" asp-for="Interaction.Id" value="@item.Id"/>
+                                
+                                <input type="hidden" asp-for="Interaction.ApplicationUserId" value="@item.ApplicationUserId"/>
+                                <input type="hidden" asp-for="Interaction.InteractionTypeName" value="@item.InteractionTypeName"/>
+                                <input type="hidden" asp-for="Interaction.Notes" value="@item.Notes"/>
+                                <input type="hidden" asp-for="Interaction.TargetTime" value="@item.TargetTime"/>
+                                <input type="hidden" asp-for="Interaction.ToDo" value="@item.ToDo"/>
+                                <input class="form-check-input" asp-for="Interaction.Finished" type="checkbox" value="true"/>
+                                    </div>
+                            </td>
+
+                            }
+
+                        
+                        <td>
+                            <h4> @Html.DisplayFor(modelItem => item.InteractionTypeName)</h4>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TargetTime)
+                        </td>
+                        @if (item.JobId != null)
+                        {
+                            <td>
+                                <a asp-page="../Job/Details" asp-route-id="@item.JobId">
+                                    <h5>@Html.DisplayFor(modelItem => item.Job.Name)</h5>
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-page="../Employer/Details" asp-route-id="@item.Job.EmployerId">
+                                    <h5> @Html.DisplayFor(modelItem => item.Job.Employer.Name)</h5>
+                                </a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                            if (item.Contact.Employer != null)
+                            {
+                                <td>
+                                    <a asp-page="../Employer/Details" asp-route-id="@item.Contact.Employer.Id">
+                                        <h5> @Html.DisplayFor(modelItem => item.Contact.Employer.Name)</h5>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+
+                        }
+                            
+                            @if (item.Contact != null)
+                            {
+                                <td>
+                                    <a asp-page="../Contact/Details" asp-route-id="@item.Contact.Id">
+                                        <h5> @Html.DisplayFor(modelItem => item.Contact.Name)</h5>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+
+                        <td>
+                            <p style="height: 50px; overflow: auto; width: auto;"> @item.Notes</p>
+
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </form>
+    </table>
+</div>

@@ -1,13 +1,19 @@
-FROM microsoft/dotnet:2.2-aspnetcore-runtime AS builder
-WORKDIR /jobrangerapp
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS builder
+WORKDIR /app
 
-COPY *.csproj .
+COPY *.csproj ./
+
 RUN dotnet restore
 
-COPY . .
-RUN dotnet publish --output /app/ --configuration Release
+COPY . ./
+RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
-WORKDIR /app
-COPY --from=builder /app.
-CMD ["dotnet", "JobRanger.dll"]
+WORKDIR /jobrangerapp
+COPY --from=builder /app/out .
+
+
+
+# CMD ["dotnet", "Program.cs"]
+
+ENTRYPOINT ["dotnet","JobRanger.dll"]

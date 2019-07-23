@@ -1,0 +1,83 @@
+﻿@page "{id:int}"
+@model JobRanger.Pages.Job.DetailsModel
+
+@{
+    ViewData["Title"] = "Job - Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@Html.DisplayFor(model => model.Job.Name)</h1>
+<h4>at @Html.DisplayFor(model => model.Job.Employer.Name)</h4>
+
+<div>
+
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job.Number)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Job.Number)
+        </dd>
+        <dt class="col-sm-2 ">
+            @Html.DisplayNameFor(model => model.Job.Description)
+        </dt>
+        <dd class="col-sm-10">
+            <p style="height: 100px; overflow: auto; width: 100%;"> @Html.DisplayFor(model => model.Job.Description)</p>
+
+        </dd>
+    </dl>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Actions
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Notes
+                </th>
+            </tr>
+
+            </thead>
+
+            @foreach (var item in Model.Job.Interactions)
+            {
+                <tbody>
+                <tr>
+                    <td>
+                        <a asp-page="../Interactions/Details" asp-route-id="@Html.DisplayFor(interaction => item.Id)">@Html.DisplayFor(interaction => item.InteractionTypeName)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(interaction => item.TargetTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(interaction => item.Notes)
+                    </td>
+                </tr>
+                </tbody>
+            }
+            <tr colspan="3">
+                <td>
+                    <a asp-page="../Interactions/Create" asp-route-id="@Model.Job.Id">Add Action</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Job.Id">Edit</a> |
+    <a asp-page="./Index">Go to Job List</a> |
+    <a href="javascript: history.go(-1)">Go Back to Previous Page</a>
+</div>
